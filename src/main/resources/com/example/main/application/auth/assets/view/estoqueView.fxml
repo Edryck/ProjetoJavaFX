@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(255, 255, 255, 1);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.main.controller.EstoqueController">
+   <children>
+      <VBox layoutX="12.0" prefHeight="600.0" prefWidth="235.0" style="-fx-background-color: rgba(72, 86, 101, 0.85);" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane fx:id="buttonVisaoGeral" accessibleRole="BUTTON" prefHeight="40.0" prefWidth="229.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets left="10.0" top="110.0" />
+               </VBox.margin>
+               <children>
+                  <FontIcon iconLiteral="mdi2h-home" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
+                  <Label layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="100.0" text="Visão Geral">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10;" styleClass="menu_lateral" stylesheets="@../styles/stylesheet.css">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <children>
+                  <FontIcon iconLiteral="mdi2p-package-variant-closed" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
+                  <Label layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="100.0" text="Estoque">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Pane>
+            <Pane fx:id="buttonVendas" accessibleRole="BUTTON" prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10;">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <children>
+                  <FontIcon iconLiteral="mdi2c-cart-outline" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
+                  <Label layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="100.0" text="Vendas">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </Pane>
+            <Pane fx:id="buttonFornecedores" accessibleRole="BUTTON" prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10;">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <children>
+                  <FontIcon iconLiteral="mdi2t-truck-outline" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
+                  <Label layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="125.0" text="Fornecedores">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </Pane>
+            <Pane fx:id="buttonRelatorios" accessibleRole="BUTTON" prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10;">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <children>
+                  <FontIcon iconLiteral="mdi2f-file-chart-outline" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
+                  <Label layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="100.0" text="Relatórios">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </Pane>
+            <Pane prefHeight="243.0" prefWidth="235.0" />
+            <Pane fx:id="buttonConfig" accessibleRole="BUTTON" prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10;">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <children>
+                  <FontIcon iconLiteral="mdi2c-cog-outline" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
+                  <Label layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="133.0" text="Configurações">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </Pane>
+         </children>
+      </VBox>
+      <AnchorPane layoutX="288.0" layoutY="1.0" prefHeight="600.0" prefWidth="765.0" style="-fx-background-color: rgba(255, 255, 255);" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane prefHeight="600.0" prefWidth="765.0" style="-fx-background-color: rgba(246, 192, 208, 0.3);" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Pane prefHeight="50.0" prefWidth="765.0" style="-fx-background-color: rgba(72, 86, 101, 1);" styleClass="sombra_menu" stylesheets="@../styles/stylesheet.css">
+                     <children>
+                        <Label layoutX="25.0" layoutY="7.0" prefHeight="38.0" prefWidth="131.0" text="Estoque" textFill="WHITE">
+                           <font>
+                              <Font name="Arial" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
