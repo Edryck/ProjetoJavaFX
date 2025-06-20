@@ -1,4 +1,3 @@
-// O package deve ser com.example.main agora
 package com.example.main;
 
 import javafx.application.Application;
@@ -12,10 +11,12 @@ import java.net.URL; // Importe a classe URL
 
 public class HelloApplication extends Application {
     private static Scene mainScene; // Guarda a cena principal
+    // Armazena o caminho da view
+    private static final String VIEW_PATH = "/com/example/main/application/auth/assets/view/";
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        URL fxmlLocation = getClass().getResource("/com/example/main/application/auth/assets/view/login.fxml");
+        URL fxmlLocation = getClass().getResource(VIEW_PATH + "login.fxml");
         Parent root = FXMLLoader.load(fxmlLocation);
 
         mainScene = new Scene(root); // Cria a cena e guarda na variável estática
@@ -25,18 +26,13 @@ public class HelloApplication extends Application {
         primaryStage.show();
     }
 
-    // MÉTODO MÁGICO PARA TROCAR DE TELA
-    public static void changeScreen(String fxml) {
+    // Método pra trocar de tela
+    public static void changeScreen(String fxmlFileName) {
         try {
-            URL fxmlLocation = HelloApplication.class.getResource("/com/example/main/view/" + fxml);
-            if (fxmlLocation == null) {
-                System.err.println("Não foi possível encontrar a tela: " + fxml);
-                return;
-            }
+            URL fxmlLocation = HelloApplication.class.getResource(VIEW_PATH + fxmlFileName);
             Parent newScreen = FXMLLoader.load(fxmlLocation);
-            mainScene.setRoot(newScreen); // Apenas troca o conteúdo da cena principal!
+            mainScene.setRoot(newScreen);
         } catch (IOException e) {
-            System.err.println("Erro ao carregar a tela: " + fxml);
             e.printStackTrace();
         }
     }

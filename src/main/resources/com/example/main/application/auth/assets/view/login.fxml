@@ -39,7 +39,18 @@
             <Font name="Arial" size="16.0" />
           </font>
         </TextField>
-        <Button fx:id="buttonLogin" layoutX="35.0" layoutY="210.0" mnemonicParsing="false" onAction="#handleButtonLogin" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: rgba(30, 50, 49, 1);" stylesheets="@../styles/stylesheet.css" text="Logar" textFill="WHITE">
+        <Label fx:id="buttonEsqueceuSenha" accessibleRole="BUTTON" layoutX="71.0" layoutY="298.0" text="Esqueceu sua senha? Clique aqui!">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Label>
+        <Label fx:id="emailNaoExisteMsg" layoutX="39.0" layoutY="82.0" text="Este email mail não existe!" textFill="RED" visible="false" />
+        <Label fx:id="senhaIncorretaMsg" layoutX="39.0" layoutY="160.0" text="Senha incorreta!" textFill="RED" visible="false" />
+            <Button fx:id="buttonTelaCadastro" layoutX="119.0" layoutY="238.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#handleTelaCadastro" style="-fx-background-color: rgba(255, 255, 255, 1);" text="Cadastrar-se" underline="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+        <Button fx:id="buttonLogin" layoutX="35.0" layoutY="210.0" mnemonicParsing="false" onAction="#handleButtonLogin" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: rgba(30, 50, 49, 1);" stylesheets="/com/example/main/application/auth/assets/styles/stylesheet.css" text="Logar" textFill="WHITE">
           <font>
             <Font name="Arial" size="14.0" />
           </font>
@@ -47,16 +58,6 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
         </Button>
-        <Label fx:id="buttonEsqueceuSenha" accessibleRole="BUTTON" layoutX="71.0" layoutY="298.0" text="Esqueceu sua senha? Clique aqui!">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Label>
-        <Label fx:id="emailNaoExisteMsg" layoutX="39.0" layoutY="82.0" text="Este email mail não existe!" textFill="RED" visible="false" />
-        <Label fx:id="senhaIncorretaMsg" layoutX="39.0" layoutY="160.0" text="Senha incorreta!" textFill="RED" visible="false" />
-        <Label fx:id="buttonCadastrar" accessibleRole="BUTTON" layoutX="126.0" layoutY="242.0" text="Cadastrar-se" underline="true">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Label>
       </children>
     </Pane>
     <Label layoutX="412.0" layoutY="63.0" prefHeight="52.0" prefWidth="177.0" text="FinStock" AnchorPane.topAnchor="60.0">

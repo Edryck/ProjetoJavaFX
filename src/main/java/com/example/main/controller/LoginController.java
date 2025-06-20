@@ -17,6 +17,9 @@ public class LoginController {
     private Button buttonLogin;
 
     @FXML
+    private Button buttonTelaCadastro;
+
+    @FXML
     private Label emailNaoExisteMsg;
 
     @FXML
@@ -25,5 +28,10 @@ public class LoginController {
     @FXML
     public void handleButtonLogin() {
         HelloApplication.changeScreen("visaoGeral.fxml");
+    }
+
+    @FXML
+    void handleTelaCadastro() {
+        HelloApplication.changeScreen("cadastroView.fxml");
     }
 }

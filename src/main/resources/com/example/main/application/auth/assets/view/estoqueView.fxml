@@ -6,9 +6,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(255, 255, 255, 1);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.main.controller.EstoqueController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(255, 255, 255, 1);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.main.controller.EstoqueController">
    <children>
       <VBox layoutX="12.0" prefHeight="600.0" prefWidth="235.0" style="-fx-background-color: rgba(72, 86, 101, 0.85);" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -20,7 +19,6 @@
                   <Insets left="10.0" top="110.0" />
                </VBox.margin>
                <children>
-                  <FontIcon iconLiteral="mdi2h-home" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
                   <Label layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="100.0" text="Visão Geral">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
@@ -31,12 +29,11 @@
                   </Label>
                </children>
             </Pane>
-            <Pane prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10;" styleClass="menu_lateral" stylesheets="@../styles/stylesheet.css">
+            <Pane prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10;" styleClass="menu_lateral" stylesheets="/com/example/main/application/auth/assets/styles/stylesheet.css">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
                <children>
-                  <FontIcon iconLiteral="mdi2p-package-variant-closed" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
                   <Label layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="100.0" text="Estoque">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
@@ -58,7 +55,6 @@
                   <Insets />
                </opaqueInsets>
                <children>
-                  <FontIcon iconLiteral="mdi2c-cart-outline" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
                   <Label layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="100.0" text="Vendas">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
@@ -77,7 +73,6 @@
                   <Insets />
                </opaqueInsets>
                <children>
-                  <FontIcon iconLiteral="mdi2t-truck-outline" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
                   <Label layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="125.0" text="Fornecedores">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
@@ -96,7 +91,6 @@
                   <Insets />
                </opaqueInsets>
                <children>
-                  <FontIcon iconLiteral="mdi2f-file-chart-outline" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
                   <Label layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="100.0" text="Relatórios">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
@@ -116,7 +110,6 @@
                   <Insets />
                </opaqueInsets>
                <children>
-                  <FontIcon iconLiteral="mdi2c-cog-outline" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
                   <Label layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="133.0" text="Configurações">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
