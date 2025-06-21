@@ -6,6 +6,8 @@ public class Usuario {
     private String emailUsuario;
     private String senhaUsuario;
 
+    public Usuario() {}
+
     public Usuario(Integer idUsuario, String nomeUsuario, String emailUsuario, String senhaUsuario) {
         this.idUsuario = idUsuario;
         this.nomeUsuario = nomeUsuario;

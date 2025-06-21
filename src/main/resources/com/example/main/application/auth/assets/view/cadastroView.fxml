@@ -12,7 +12,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.main.controller.CadastroUsuarioController">
     <children>
-        <Pane layoutX="340.0" layoutY="140.0" prefHeight="400.0" prefWidth="320.0" style="-fx-background-color: ffffff; -fx-background-radius: 10px; -fx-border-color: d9d9d9; -fx-border-radius: 10px;">
+        <Pane layoutX="340.0" layoutY="140.0" prefHeight="400.0" prefWidth="320.0" style="-fx-background-color: ffffff; -fx-background-radius: 10px; -fx-border-color: d9d9d9; -fx-border-radius: 10px;" styleClass="sombra_menu" stylesheets="@../styles/stylesheet.css">
             <children>
             <Label layoutX="35.0" layoutY="20.0" text="Nome">
                <font>
@@ -68,7 +68,7 @@
                </font>
             </TextField>
                 <Label fx:id="senhaNaoConfereMsg" layoutX="35.0" layoutY="285.0" text="Senha não confere!" textFill="RED" visible="false" />
-                <Button fx:id="buttonCadastro" layoutX="30.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleButtonCadastro" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: rgba(30, 50, 49, 1);" stylesheets="/com/example/main/application/auth/assets/styles/stylesheet.css" text="Cadastrar" textFill="WHITE">
+                <Button fx:id="buttonCadastro" layoutX="30.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleButtonCadastro" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: rgba(30, 50, 49, 1);" styleClass="sombra_menu" stylesheets="@../styles/stylesheet.css" text="Cadastrar" textFill="WHITE">
                     <font>
                         <Font name="Arial" size="14.0" />
                     </font>
