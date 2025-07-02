@@ -37,7 +37,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="buttonEstoque" accessibleRole="BUTTON" prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10;" stylesheets="@../styles/stylesheet.css">
+            <Pane fx:id="buttonEstoque" accessibleRole="BUTTON" onMouseClicked="#handleButtonEstoque" prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10;" stylesheets="@../styles/stylesheet.css">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -151,7 +151,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane layoutX="13.0" layoutY="60.0" prefHeight="100.0" prefWidth="175.0" styleClass="blocos_info" stylesheets="@../styles/stylesheet.css">
+                  <Pane layoutX="13.0" layoutY="60.0" prefHeight="100.0" prefWidth="175.0" styleClass="blocos-info" stylesheets="@../styles/stylesheet.css">
                      <children>
                         <Label layoutX="38.0" layoutY="5.0" text="Margem bruta">
                            <font>
@@ -165,7 +165,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane layoutX="201.0" layoutY="60.0" prefHeight="100.0" prefWidth="175.0" styleClass="blocos_info" stylesheets="@../styles/stylesheet.css">
+                  <Pane layoutX="201.0" layoutY="60.0" prefHeight="100.0" prefWidth="175.0" styleClass="blocos-info" stylesheets="@../styles/stylesheet.css">
                      <children>
                         <Label layoutX="37.0" layoutY="5.0" text="Margem liquida">
                            <font>
@@ -179,7 +179,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane layoutX="389.0" layoutY="60.0" prefHeight="100.0" prefWidth="175.0" styleClass="blocos_info" stylesheets="@../styles/stylesheet.css">
+                  <Pane layoutX="389.0" layoutY="60.0" prefHeight="100.0" prefWidth="175.0" styleClass="blocos-info" stylesheets="@../styles/stylesheet.css">
                      <children>
                         <Label layoutX="46.0" layoutY="5.0" text="Ticket médio">
                            <font>
@@ -193,7 +193,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane layoutX="577.0" layoutY="60.0" prefHeight="100.0" prefWidth="175.0" styleClass="blocos_info" stylesheets="@../styles/stylesheet.css">
+                  <Pane layoutX="577.0" layoutY="60.0" prefHeight="100.0" prefWidth="175.0" styleClass="blocos-info" stylesheets="@../styles/stylesheet.css">
                      <children>
                         <Label layoutX="31.0" layoutY="5.0" text="Total de pedidos">
                            <font>
@@ -214,7 +214,7 @@
                   </Label>
                   <Pane layoutX="13.0" layoutY="200.0" prefHeight="200.0" prefWidth="360.0" styleClass="blocos_info" stylesheets="@../styles/stylesheet.css">
                      <children>
-                        <LineChart cache="true" cacheHint="QUALITY" prefHeight="200.0" prefWidth="360.0" title="Vendas por período">
+                        <LineChart cache="true" cacheHint="QUALITY" prefHeight="200.0" prefWidth="360.0" styleClass="blocos-info" title="Vendas por período">
                            <xAxis>
                               <CategoryAxis label="Jan Fev Mar Abr Mai Jun Jul Ago Set Out Nov Dez" prefHeight="17.0" prefWidth="303.0" />
                            </xAxis>
@@ -229,7 +229,7 @@
                   </Pane>
                   <Pane layoutX="389.0" layoutY="200.0" prefHeight="200.0" prefWidth="360.0" styleClass="blocos_info" stylesheets="@../styles/stylesheet.css">
                      <children>
-                        <BarChart prefHeight="200.0" prefWidth="360.0" title="Produtos mais vendidos">
+                        <BarChart prefHeight="200.0" prefWidth="360.0" styleClass="blocos-info" title="Produtos mais vendidos">
                            <xAxis>
                               <CategoryAxis side="BOTTOM" />
                            </xAxis>
@@ -239,7 +239,7 @@
                         </BarChart>
                      </children>
                   </Pane>
-                  <Pane layoutX="13.0" layoutY="420.0" prefHeight="160.0" prefWidth="733.0" styleClass="blocos_info" stylesheets="@../styles/stylesheet.css">
+                  <Pane layoutX="13.0" layoutY="420.0" prefHeight="160.0" prefWidth="733.0" styleClass="blocos-info" stylesheets="@../styles/stylesheet.css">
                      <children>
                         <Label layoutX="15.0" layoutY="10.0" text="Produtos com baixo estoque">
                            <font>

@@ -1,31 +1,34 @@
-package main.model.vo;
+package com.example.main.model.vo;
 
 public class Produto {
-    private Integer idCodigo;
+    private String idCodigo;
     private String marcaProduto;
     private String descricaoProduto;
     private Integer quantidade;
     private String categoriaProduto;
-    private String FornecedorProduto;
+    private String fornecedorProduto;
     private Double precoCusto;
     private Double precoVenda;
+    private Boolean ativo;
+    private String imagem;
 
-    public Produto(Integer idCodigo, String marcaProduto, String descricaoProduto, String categoriaProduto, Integer quant, String fornecedorProduto, Double precoCusto, Double precoVenda) {
+    public Produto(String idCodigo, String marcaProduto, String descricaoProduto, Integer quantidade, String categoriaProduto, String fornecedorProduto, Double precoCusto, Double precoVenda, String imagem) {
         this.idCodigo = idCodigo;
         this.marcaProduto = marcaProduto;
         this.descricaoProduto = descricaoProduto;
-        this.quantidade = quant;
+        this.quantidade = quantidade;
         this.categoriaProduto = categoriaProduto;
-        this.FornecedorProduto = fornecedorProduto;
+        this.fornecedorProduto = fornecedorProduto;
         this.precoCusto = precoCusto;
         this.precoVenda = precoVenda;
+        this.imagem = imagem;
     }
 
-    public int getIdCodigo() {
+    public String getIdCodigo() {
         return idCodigo;
     }
 
-    public void setIdCodigo(Integer idCodigo) {
+    public void setIdCodigo(String idCodigo) {
         this.idCodigo = idCodigo;
     }
 
@@ -45,7 +48,7 @@ public class Produto {
         this.descricaoProduto = descricaoProduto;
     }
 
-    public int getQuantidade() {
+    public Integer getQuantidade() {
         return quantidade;
     }
 
@@ -62,14 +65,14 @@ public class Produto {
     }
 
     public String getFornecedorProduto() {
-        return FornecedorProduto;
+        return fornecedorProduto;
     }
 
     public void setFornecedorProduto(String fornecedorProduto) {
-        FornecedorProduto = fornecedorProduto;
+        this.fornecedorProduto = fornecedorProduto;
     }
 
-    public double getPrecoCusto() {
+    public Double getPrecoCusto() {
         return precoCusto;
     }
 
@@ -77,11 +80,28 @@ public class Produto {
         this.precoCusto = precoCusto;
     }
 
-    public double getPrecoVenda() {
+    public Double getPrecoVenda() {
         return precoVenda;
     }
 
     public void setPrecoVenda(Double precoVenda) {
         this.precoVenda = precoVenda;
     }
+
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+    }
+
 }

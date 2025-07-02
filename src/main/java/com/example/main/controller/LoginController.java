@@ -1,7 +1,9 @@
 package com.example.main.controller;
 
 import com.example.main.HelloApplication;
-import com.example.main.model.rn.CadastroUsuarioRN;
+import com.example.main.enums.TipoAlerta;
+import com.example.main.model.rn.UsuarioRN;
+import com.example.main.util.Alerta;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -33,7 +35,7 @@ public class LoginController {
     @FXML
     private Label senhaIncorretaMsg;
 
-    private final CadastroUsuarioRN cadastroRN = new CadastroUsuarioRN();
+    private final UsuarioRN cadastroRN = new UsuarioRN();
 
     @FXML
     public void handleButtonLogin() {
@@ -43,7 +45,8 @@ public class LoginController {
         if (cadastroRN.autenticao(email, senha)) {
             HelloApplication.changeScreen("visaoGeral.fxml");
         } else {
-            System.out.println("Login falhou!");
+            Alerta.mostrarAlerta(TipoAlerta.ERRO, "Erro ao realizar login!", "Email ou senha incorretos! Tente Novamente.");
+            System.out.println("Login falhou!"); // Provisório
         }
     }
 

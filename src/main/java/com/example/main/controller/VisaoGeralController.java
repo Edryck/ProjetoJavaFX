@@ -1,10 +1,9 @@
 package com.example.main.controller;
 
+import com.example.main.HelloApplication;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 
-
-// Adicione "implements Initializable"
 public class VisaoGeralController {
 
     @FXML
@@ -21,4 +20,9 @@ public class VisaoGeralController {
 
     @FXML
     private Pane buttonEstoque;
+
+    @FXML
+    void handleButtonEstoque() {
+        HelloApplication.changeScreen("estoqueView.fxml");
+    }
 }

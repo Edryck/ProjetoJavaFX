@@ -13,7 +13,8 @@ module com.example.main {
     requires eu.hansolo.tilesfx;
     requires org.kordamp.ikonli.core;
     requires org.kordamp.ikonli.fontawesome5;
-    requires java.sql; // <-- CORRIGIDO para fontawesome5
+    requires java.sql;
+    requires org.kordamp.ikonli.materialdesign2;
 
     // Abre seus pacotes para o JavaFX
     opens com.example.main to javafx.fxml;

@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.main.controller.LoginController">
   <children>
-    <Pane layoutX="340.0" layoutY="140.0" prefHeight="320.0" prefWidth="320.0" style="-fx-background-color: ffffff; -fx-background-radius: 10px; -fx-border-color: d9d9d9; -fx-border-radius: 10px;">
+    <Pane layoutX="340.0" layoutY="140.0" prefHeight="320.0" prefWidth="320.0" style="-fx-background-color: ffffff; -fx-background-radius: 10px; -fx-border-color: d9d9d9; -fx-border-radius: 10px;" styleClass="sombra_menu" stylesheets="@../styles/stylesheet.css">
       <children>
         <Label layoutX="35.0" layoutY="30.0" text="Email">
           <font>
@@ -45,12 +45,7 @@
                </cursor></Label>
         <Label fx:id="emailNaoExisteMsg" layoutX="39.0" layoutY="82.0" text="Este email mail não existe!" textFill="RED" visible="false" />
         <Label fx:id="senhaIncorretaMsg" layoutX="39.0" layoutY="160.0" text="Senha incorreta!" textFill="RED" visible="false" />
-            <Button fx:id="buttonTelaCadastro" layoutX="119.0" layoutY="238.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#handleTelaCadastro" style="-fx-background-color: rgba(255, 255, 255, 1);" text="Cadastrar-se" underline="true">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-        <Button fx:id="buttonLogin" layoutX="35.0" layoutY="210.0" mnemonicParsing="false" onAction="#handleButtonLogin" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: rgba(30, 50, 49, 1);" stylesheets="/com/example/main/application/auth/assets/styles/stylesheet.css" text="Logar" textFill="WHITE">
+        <Button fx:id="buttonLogin" layoutX="35.0" layoutY="210.0" mnemonicParsing="false" onAction="#handleButtonLogin" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: rgba(30, 50, 49, 1);" styleClass="sombra_menu" stylesheets="@../styles/stylesheet.css" text="Logar" textFill="WHITE">
           <font>
             <Font name="Arial" size="14.0" />
           </font>
@@ -58,6 +53,11 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
         </Button>
+            <Button fx:id="buttonTelaCadastro" layoutX="110.0" layoutY="241.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#handleTelaCadastro" prefHeight="25.0" prefWidth="93.0" style="-fx-background-color: rgba(255, 255, 255, 1);" text="Cadastrar-se" underline="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
       </children>
     </Pane>
     <Label layoutX="412.0" layoutY="63.0" prefHeight="52.0" prefWidth="177.0" text="FinStock" AnchorPane.topAnchor="60.0">

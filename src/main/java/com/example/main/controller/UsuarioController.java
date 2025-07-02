@@ -1,8 +1,10 @@
 package com.example.main.controller;
 
 import com.example.main.HelloApplication;
-import com.example.main.model.dao.CadastroUsuarioDAO;
-import com.example.main.model.rn.CadastroUsuarioRN;
+import com.example.main.enums.TipoAlerta;
+import com.example.main.model.dao.UsuarioDAO;
+import com.example.main.model.rn.UsuarioRN;
+import com.example.main.util.Alerta;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -10,7 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class CadastroUsuarioController {
+public class UsuarioController {
 
     @FXML
     private Button buttonCadastro;
@@ -33,11 +35,13 @@ public class CadastroUsuarioController {
     @FXML
     private Label senhaNaoConfereMsg;
 
-    private final CadastroUsuarioRN cadastroRN = new CadastroUsuarioRN();
-    private final CadastroUsuarioDAO cadastroDAO = new CadastroUsuarioDAO();
+    private final UsuarioRN cadastroRN = new UsuarioRN();
+    private final UsuarioDAO cadastroDAO = new UsuarioDAO();
 
     @FXML
-    void handleButtonCadastro(ActionEvent event) {
+    void handleButtonCadastro() {
+        Alerta alerta = new Alerta();
+
         senhaNaoConfereMsg.setVisible(false);
         emailJaCadastradoMsg.setVisible(false);
 
@@ -57,12 +61,7 @@ public class CadastroUsuarioController {
         }
 
         cadastroDAO.cadastrar(nome, email, senha);
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Sucesso");
-        alert.setHeaderText("Cadastro Realizado");
-        alert.setContentText("Sua conta foi criada com sucesso!");
-        alert.showAndWait();
+        alerta.mostrarAlerta(TipoAlerta.SUCESSO, "Cadastro Realizado!", "Sua conta foi criada com suceso!");
 
         HelloApplication.changeScreen("login.fxml");
     }

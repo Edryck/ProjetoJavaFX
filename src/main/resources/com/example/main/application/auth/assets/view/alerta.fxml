@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane prefHeight="225.0" prefWidth="400.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0.5, 0, 0);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.main.controller.AlertaController">
+   <children>
+      <VBox alignment="CENTER" layoutX="125.0" layoutY="16.0" spacing="15.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+         <children>
+            <FontIcon fx:id="iconeAlerta" iconColor="#27ae60" iconLiteral="mdi2c-check-circle-outline" iconSize="60" />
+            <Label fx:id="tituloLabel" text="Sucesso!">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="mensagemLabel" text="Sua operação foi concluída com sucesso!" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="botaoOk" mnemonicParsing="false" onAction="#fechar" prefHeight="24.0" prefWidth="120.0" style="-fx-background-color: #1e3231; -fx-background-radius: 10;" text="Continuar" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class CadastroUsuarioDAO implements Validacoes {
+public class UsuarioDAO implements ManipulacaoUsuario {
     @Override
     public boolean emailJaExiste (String email){
         String sql = "SELECT * FROM usuarios WHERE emailUsuario = ?";

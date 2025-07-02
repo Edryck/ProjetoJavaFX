@@ -1,21 +1,13 @@
 package com.example.main.model.rn;
 
-import com.example.main.connection.ConnectionFactory;
-import com.example.main.model.dao.CadastroUsuarioDAO;
-import com.example.main.model.dao.Validacoes;
+import com.example.main.model.dao.UsuarioDAO;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-public class CadastroUsuarioRN {
-    private final CadastroUsuarioDAO cadastroDAO = new CadastroUsuarioDAO();
+public class UsuarioRN {
+    private final UsuarioDAO cadastroDAO = new UsuarioDAO();
 
     public boolean emailJaExiste (String email) {
-        CadastroUsuarioDAO cadastroDAO = new CadastroUsuarioDAO();
-        boolean existe = cadastroDAO.emailJaExiste(email);
-        return existe;
+        UsuarioDAO cadastroDAO = new UsuarioDAO();
+        return cadastroDAO.emailJaExiste(email);
     }
 
     public boolean confirmaSenha (String senha, String confirmacao) {

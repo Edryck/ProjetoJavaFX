@@ -12,11 +12,11 @@ import java.net.URL; // Importe a classe URL
 public class HelloApplication extends Application {
     private static Scene mainScene; // Guarda a cena principal
     // Armazena o caminho da view
-    private static final String VIEW_PATH = "/com/example/main/application/auth/assets/view/";
+    private static final String caminhoView = "/com/example/main/application/auth/assets/view/";
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        URL fxmlLocation = getClass().getResource(VIEW_PATH + "login.fxml");
+        URL fxmlLocation = getClass().getResource(caminhoView + "login.fxml"); // Alterar depois
         Parent root = FXMLLoader.load(fxmlLocation);
 
         mainScene = new Scene(root); // Cria a cena e guarda na variável estática
@@ -26,12 +26,12 @@ public class HelloApplication extends Application {
         primaryStage.show();
     }
 
-    // Método pra trocar de tela
+    // Método para trocar de tela
     public static void changeScreen(String fxmlFileName) {
         try {
-            URL fxmlLocation = HelloApplication.class.getResource(VIEW_PATH + fxmlFileName);
-            Parent newScreen = FXMLLoader.load(fxmlLocation);
-            mainScene.setRoot(newScreen);
+            URL fxmlLocation = HelloApplication.class.getResource(caminhoView + fxmlFileName);
+            Parent novaTela = FXMLLoader.load(fxmlLocation);
+            mainScene.setRoot(novaTela);
         } catch (IOException e) {
             e.printStackTrace();
         }
