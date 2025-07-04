@@ -53,8 +53,8 @@ public class UsuarioDAO implements ManipulacaoUsuario {
         String sql = "SELECT * FROM usuarios WHERE emailUsuario = ?";
         main.model.vo.Usuario usuario = null;
 
-        try (Connection connection = ConnectionFactory.getConnection()) {
-            PreparedStatement ps = connection.prepareStatement(sql);
+        try (Connection connection = ConnectionFactory.getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, email);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {

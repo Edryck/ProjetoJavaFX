@@ -12,6 +12,8 @@ public class Produto {
     private Boolean ativo;
     private String imagem;
 
+    public Produto() {}
+
     public Produto(String idCodigo, String marcaProduto, String descricaoProduto, Integer quantidade, String categoriaProduto, String fornecedorProduto, Double precoCusto, Double precoVenda, String imagem) {
         this.idCodigo = idCodigo;
         this.marcaProduto = marcaProduto;

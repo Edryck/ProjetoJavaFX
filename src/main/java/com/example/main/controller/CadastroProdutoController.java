@@ -1,8 +1,11 @@
 package com.example.main.controller;
 
 import com.example.main.HelloApplication;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -14,8 +17,12 @@ import javafx.stage.Stage;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.io.File;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class CadastroProdutoController {
+public class CadastroProdutoController implements Initializable {
+    private final ObservableList<String> categorias = FXCollections.observableArrayList("Suitãs", "Calcinhas", "Cuecas", "Conjuntos", "Outro");
+
     @FXML
     private Button buttonAjustarEstoque;
 
@@ -26,7 +33,7 @@ public class CadastroProdutoController {
     private FontIcon buttonVoltarTela;
 
     @FXML
-    private ChoiceBox<?> categoriaProduto;
+    private ChoiceBox<String> categoriaProduto;
 
     @FXML
     private TextField codigoField;
@@ -57,6 +64,11 @@ public class CadastroProdutoController {
 
     @FXML
     private Button selecionarImg;
+
+    public void initialize(URL location, ResourceBundle resources) {
+        categoriaProduto.setItems(categorias);
+        categoriaProduto.setValue("Outro");
+    }
 
     @FXML
     void handleButtonCadastro() {

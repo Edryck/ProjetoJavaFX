@@ -16,7 +16,7 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        URL fxmlLocation = getClass().getResource(caminhoView + "login.fxml"); // Alterar depois
+        URL fxmlLocation = getClass().getResource(caminhoView + "visaoGeral.fxml"); // Alterar depois
         Parent root = FXMLLoader.load(fxmlLocation);
 
         mainScene = new Scene(root); // Cria a cena e guarda na variável estática
