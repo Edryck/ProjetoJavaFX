@@ -1,36 +1,30 @@
 package com.example.main.controller;
 
 import com.example.main.HelloApplication;
+import com.example.main.enums.TipoAlerta;
+import com.example.main.exceptions.RNException;
+import com.example.main.model.rn.ProdutoRN;
+import com.example.main.model.vo.Produto;
+import com.example.main.util.Alerta;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import org.kordamp.ikonli.javafx.FontIcon;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.math.BigDecimal;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class CadastroProdutoController implements Initializable {
     private final ObservableList<String> categorias = FXCollections.observableArrayList("Suitãs", "Calcinhas", "Cuecas", "Conjuntos", "Outro");
-
-    @FXML
-    private Button buttonAjustarEstoque;
-
-    @FXML
-    private Button buttonCadastro;
-
-    @FXML
-    private FontIcon buttonVoltarTela;
+    private final ProdutoRN produtoRN = new ProdutoRN();
 
     @FXML
     private ChoiceBox<String> categoriaProduto;
@@ -40,6 +34,15 @@ public class CadastroProdutoController implements Initializable {
 
     @FXML
     private TextField descricaoField;
+
+    @FXML
+    public Label formatoInvalidoPCMsg;
+
+    @FXML
+    public Label formatoInvalidoPVMsg;
+
+    @FXML
+    public Label formatoInvalidoQMsg;
 
     @FXML
     private TextField fornecedorField;
@@ -72,7 +75,60 @@ public class CadastroProdutoController implements Initializable {
 
     @FXML
     void handleButtonCadastro() {
-        
+        formatoInvalidoPVMsg.setVisible(false);
+        formatoInvalidoPCMsg.setVisible(false);
+        formatoInvalidoQMsg.setVisible(false);
+
+        try {
+            BigDecimal precoV;
+            BigDecimal precoC;
+            int quantidade;
+            try {
+                precoV = new BigDecimal(precoVendaFIeld.getText().replace(",", "."));
+            } catch (NumberFormatException e) {
+                formatoInvalidoPVMsg.setVisible(true);
+                return;
+            }
+            try {
+                precoC = new BigDecimal(precoCustoFIeld.getText().replace(",", "."));
+            } catch (NumberFormatException e) {
+                formatoInvalidoPCMsg.setVisible(true);
+                return;
+            }
+            try {
+                quantidade = Integer.parseInt(quantidadeField.getText());
+            } catch (NumberFormatException e) {
+                formatoInvalidoQMsg.setVisible(true);
+                return;
+            }
+
+            Produto produto = getProduto(precoV, precoC, quantidade);
+
+            produtoRN.cadastrar(produto);
+            Alerta.mostrarAlerta(TipoAlerta.P_CAD, "Produto cadastrado!", "O produto foi cadastrado com sucesso!");
+
+            HelloApplication.changeScreen("estoqueView.fxml");
+        } catch(NumberFormatException e) {
+            Alerta.mostrarAlerta(TipoAlerta.ERRO, "Formato inválido!", "Preços e quantidade devem conter%napenas números");
+        } catch(RNException e) {
+            Alerta.mostrarAlerta(TipoAlerta.ERRO, "Erro de validação!", e.getMessage());
+        }
+    }
+
+    @NotNull
+    private Produto getProduto(BigDecimal precoV, BigDecimal precoC, int quantidade) {
+        Produto produto = new Produto();
+        produto.setIdProduto(codigoField.getText());
+        produto.setMarca(marcaField.getText());
+        produto.setDescricao(descricaoField.getText());
+        produto.setCategoria(categoriaProduto.getValue());
+        produto.setFornecedor(fornecedorField.getText());
+        produto.setPrecoVenda(precoV);
+        produto.setPrecoCusto(precoC);
+        produto.setQuantidade(quantidade);
+        produto.setAtivo(true);
+        produto.setImagem(caminhoImg.getText());
+        return produto;
     }
 
     @FXML

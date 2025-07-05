@@ -4,6 +4,6 @@ import main.model.vo.Usuario;
 
 public interface ManipulacaoUsuario {
     boolean emailJaExiste (String email);
-    void cadastrar (String nome, String email, String senha);
+    void cadastrar (Usuario usuario);
     Usuario login (String email);
 }

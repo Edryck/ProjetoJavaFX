@@ -46,7 +46,7 @@ public class LoginController {
             HelloApplication.changeScreen("visaoGeral.fxml");
         } else {
             Alerta.mostrarAlerta(TipoAlerta.ERRO, "Erro ao realizar login!", "Email ou senha incorretos! Tente Novamente.");
-            System.out.println("Login falhou!"); // Provisório
+            System.out.println("Login falhou!");
         }
     }
 

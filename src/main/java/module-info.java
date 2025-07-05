@@ -15,10 +15,13 @@ module com.example.main {
     requires org.kordamp.ikonli.fontawesome5;
     requires java.sql;
     requires org.kordamp.ikonli.materialdesign2;
+    requires annotations;
 
     // Abre seus pacotes para o JavaFX
     opens com.example.main to javafx.fxml;
     exports com.example.main;
     opens com.example.main.controller to javafx.fxml;
     exports com.example.main.controller;
+    opens com.example.main.model.vo to javafx.fxml, javafx.base;
+    exports com.example.main.model.vo;
 }

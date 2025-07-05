@@ -1,53 +1,55 @@
 package com.example.main.model.vo;
 
+import java.math.BigDecimal;
+
 public class Produto {
-    private String idCodigo;
-    private String marcaProduto;
-    private String descricaoProduto;
+    private String idProduto;
+    private String marca;
+    private String descricao;
     private Integer quantidade;
-    private String categoriaProduto;
-    private String fornecedorProduto;
-    private Double precoCusto;
-    private Double precoVenda;
+    private String categoria;
+    private String fornecedor;
+    private BigDecimal precoCusto;
+    private BigDecimal precoVenda;
     private Boolean ativo;
     private String imagem;
 
     public Produto() {}
 
-    public Produto(String idCodigo, String marcaProduto, String descricaoProduto, Integer quantidade, String categoriaProduto, String fornecedorProduto, Double precoCusto, Double precoVenda, String imagem) {
-        this.idCodigo = idCodigo;
-        this.marcaProduto = marcaProduto;
-        this.descricaoProduto = descricaoProduto;
+    public Produto(String idCodigo, String marca, String descricaoProduto, Integer quantidade, String categoriaProduto, String fornecedorProduto, BigDecimal precoCusto, BigDecimal precoVenda, String imagem) {
+        this.idProduto = idCodigo;
+        this.marca = marca;
+        this.descricao = descricaoProduto;
         this.quantidade = quantidade;
-        this.categoriaProduto = categoriaProduto;
-        this.fornecedorProduto = fornecedorProduto;
+        this.categoria = categoriaProduto;
+        this.fornecedor = fornecedorProduto;
         this.precoCusto = precoCusto;
         this.precoVenda = precoVenda;
         this.imagem = imagem;
     }
 
-    public String getIdCodigo() {
-        return idCodigo;
+    public String getIdProduto() {
+        return idProduto;
     }
 
-    public void setIdCodigo(String idCodigo) {
-        this.idCodigo = idCodigo;
+    public void setIdProduto(String idProduto) {
+        this.idProduto = idProduto;
     }
 
-    public String getMarcaProduto() {
-        return marcaProduto;
+    public String getMarca() {
+        return marca;
     }
 
-    public void setMarcaProduto(String marcaProduto) {
-        this.marcaProduto = marcaProduto;
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
-    public String getDescricaoProduto() {
-        return descricaoProduto;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDescricaoProduto(String descricaoProduto) {
-        this.descricaoProduto = descricaoProduto;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public Integer getQuantidade() {
@@ -58,35 +60,35 @@ public class Produto {
         this.quantidade = quantidade;
     }
 
-    public String getCategoriaProduto() {
-        return categoriaProduto;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setCategoriaProduto(String categoriaProduto) {
-        this.categoriaProduto = categoriaProduto;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
-    public String getFornecedorProduto() {
-        return fornecedorProduto;
+    public String getFornecedor() {
+        return fornecedor;
     }
 
-    public void setFornecedorProduto(String fornecedorProduto) {
-        this.fornecedorProduto = fornecedorProduto;
+    public void setFornecedor(String fornecedor) {
+        this.fornecedor = fornecedor;
     }
 
-    public Double getPrecoCusto() {
+    public BigDecimal getPrecoCusto() {
         return precoCusto;
     }
 
-    public void setPrecoCusto(Double precoCusto) {
+    public void setPrecoCusto(BigDecimal precoCusto) {
         this.precoCusto = precoCusto;
     }
 
-    public Double getPrecoVenda() {
+    public BigDecimal getPrecoVenda() {
         return precoVenda;
     }
 
-    public void setPrecoVenda(Double precoVenda) {
+    public void setPrecoVenda(BigDecimal precoVenda) {
         this.precoVenda = precoVenda;
     }
 

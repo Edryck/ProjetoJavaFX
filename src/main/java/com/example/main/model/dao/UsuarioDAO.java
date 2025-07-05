@@ -1,6 +1,9 @@
 package com.example.main.model.dao;
 
 import com.example.main.connection.ConnectionFactory;
+import com.example.main.enums.TipoAlerta;
+import com.example.main.util.Alerta;
+import javafx.application.Platform;
 import main.model.vo.Usuario;
 
 import java.sql.Connection;
@@ -13,9 +16,12 @@ public class UsuarioDAO implements ManipulacaoUsuario {
     public boolean emailJaExiste (String email){
         String sql = "SELECT * FROM usuarios WHERE emailUsuario = ?";
         boolean emailExiste = false;
-
-        try (Connection connection = ConnectionFactory.getConnection()) {
-            PreparedStatement ps = connection.prepareStatement(sql);
+        Connection connection = ConnectionFactory.getConnection();
+        if(connection == null) {
+            Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Conexão com o Banco de Dados", "Erro inesperado: Não foi possível conectar com o banco de dados. Tente novamente.");
+            return false;
+        }
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, email);
 
             try (ResultSet rs = ps.executeQuery()) {
@@ -24,27 +30,31 @@ public class UsuarioDAO implements ManipulacaoUsuario {
                 }
             }
         } catch (SQLException e) {
+            Platform.runLater(() -> Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Erro no acesso ao dados", "Erro inesperado: Não foi possível acessar os dados. Tente novamente."));
             System.err.println("Erro ao verificar o login: " + e.getMessage());
-            e.printStackTrace();
         }
         return emailExiste;
     }
 
     @Override
-    public void cadastrar(String nome, String email, String senha) {
+    public void cadastrar(Usuario usuario) {
         String sql = "INSERT INTO usuarios (nomeUsuario, emailUsuario, senhaUsuario) VALUES (?, ?, ?)";
 
-        try (Connection connection = ConnectionFactory.getConnection()) {
-            PreparedStatement ps = connection.prepareStatement(sql);
+        Connection connection = ConnectionFactory.getConnection();
+        if(connection == null) {
+            Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Conexão com o Banco de Dados", "Erro inesperado: Não foi possível conectar com o banco de dados. Tente novamente.");
+            return;
+        }
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
 
-            ps.setString(1, nome);
-            ps.setString(2, email);
-            ps.setString(3, senha);
+            ps.setString(1, usuario.getNomeUsuario());
+            ps.setString(2, usuario.getemailUsuario());
+            ps.setString(3, usuario.getSenhaUsuario());
 
             ps.executeUpdate();
         } catch (SQLException e) {
-            System.err.println("Erro ao cadastrar usuário: " + e.getMessage());
-            e.printStackTrace();
+            Platform.runLater(() -> Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Erro no acesso ao dados", "Erro inesperado: Não foi possível acessar os dados. Tente novamente."));
+            System.err.println("Erro ao verificar o login: " + e.getMessage());
         }
     }
 
@@ -53,8 +63,12 @@ public class UsuarioDAO implements ManipulacaoUsuario {
         String sql = "SELECT * FROM usuarios WHERE emailUsuario = ?";
         main.model.vo.Usuario usuario = null;
 
-        try (Connection connection = ConnectionFactory.getConnection();
-            PreparedStatement ps = connection.prepareStatement(sql)) {
+        Connection connection = ConnectionFactory.getConnection();
+        if(connection == null) {
+            Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Conexão com o Banco de Dados", "Erro inesperado: Não foi possível conectar com o banco de dados. Tente novamente.");
+            return null;
+        }
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, email);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
@@ -67,7 +81,8 @@ public class UsuarioDAO implements ManipulacaoUsuario {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            Platform.runLater(() -> Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Erro no acesso ao dados", "Erro inesperado: Não foi possível acessar os dados. Tente novamente."));
+            System.err.println("Erro ao verificar o login: " + e.getMessage());
         }
         return usuario;
     }

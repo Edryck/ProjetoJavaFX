@@ -6,7 +6,6 @@ public class UsuarioRN {
     private final UsuarioDAO cadastroDAO = new UsuarioDAO();
 
     public boolean emailJaExiste (String email) {
-        UsuarioDAO cadastroDAO = new UsuarioDAO();
         return cadastroDAO.emailJaExiste(email);
     }
 
@@ -20,9 +19,16 @@ public class UsuarioRN {
         if (usuario == null) {
             return false;
         }
-        if (confirmaSenha(senha, usuario.getSenhaUsuario())) {
-            return true;
-        }
-        return false;
+        return confirmaSenha(senha, usuario.getSenhaUsuario());
+    }
+
+    public void cadastro(String nome, String email, String senha) {
+        main.model.vo.Usuario usuario = new main.model.vo.Usuario();
+
+        usuario.setNomeUsuario(nome);
+        usuario.setemailUsuario(email);
+        usuario.setSenhaUsuario(senha);
+
+        cadastroDAO.cadastrar(usuario);
     }
 }

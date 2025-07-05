@@ -12,8 +12,6 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(255, 255, 255, 1);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.main.controller.CadastroProdutoController">
     <children>
         <Pane prefHeight="550.0" prefWidth="875.0" style="-fx-background-color: ffffff; -fx-background-radius: 10px; -fx-border-color: d9d9d9; -fx-border-radius: 10px;" styleClass="sombra_menu" stylesheets="@../styles/stylesheet.css" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="25.0">
@@ -137,6 +135,21 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
+            <Label fx:id="formatoInvalidoPVMsg" layoutX="56.0" layoutY="349.0" text="Formato inválido" textFill="#e74c3c" visible="false">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="formatoInvalidoPCMsg" layoutX="211.0" layoutY="349.0" text="Formato inválido" textFill="#e74c3c" visible="false">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="formatoInvalidoQMsg" layoutX="58.0" layoutY="469.0" text="Formato inválido" textFill="#e74c3c" visible="false">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
             </children>
         </Pane>
         <FontIcon fx:id="buttonVoltarTela" accessibleRole="BUTTON" iconLiteral="mdi2a-arrow-left" iconSize="30" onMouseClicked="#handleVoltar" selectionEnd="0" tabSize="0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
