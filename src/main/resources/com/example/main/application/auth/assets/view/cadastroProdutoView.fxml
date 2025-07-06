@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(255, 255, 255, 1);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.main.controller.CadastroProdutoController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(255, 255, 255, 1);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.main.controller.estoque.CadastroProdutoController">
     <children>
         <Pane prefHeight="550.0" prefWidth="875.0" style="-fx-background-color: ffffff; -fx-background-radius: 10px; -fx-border-color: d9d9d9; -fx-border-radius: 10px;" styleClass="sombra_menu" stylesheets="@../styles/stylesheet.css" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="25.0">
             <children>
@@ -118,9 +118,9 @@
                   <Font name="Arial" size="16.0" />
                </font>
             </TextField>
+            <ImageView fx:id="imagePreview" fitHeight="300.0" fitWidth="300.0" layoutX="475.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" />
             <Pane layoutX="475.0" layoutY="60.0" prefHeight="300.0" prefWidth="300.0" style="-fx-border-color: f6c0d0;" styleClass="forms" stylesheets="@../styles/stylesheet.css">
                <children>
-                  <ImageView fx:id="imagePreview" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" />
                   <FontIcon iconLiteral="mdi2i-image-outline" iconSize="60" layoutX="121.0" layoutY="173.0" />
                   <Button fx:id="selecionarImg" layoutX="90.0" layoutY="185.0" mnemonicParsing="false" onAction="#handleSelecionarImg" style="-fx-background-color: rgba(30, 50, 49, 1);" text="Selecionar Imagem" textFill="WHITE" />
                   <Label layoutX="70.0" layoutY="101.0" text="Adicionar imagem do produto" />

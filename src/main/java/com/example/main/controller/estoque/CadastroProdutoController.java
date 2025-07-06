@@ -1,4 +1,4 @@
-package com.example.main.controller;
+package com.example.main.controller.estoque;
 
 import com.example.main.HelloApplication;
 import com.example.main.enums.TipoAlerta;
@@ -80,24 +80,23 @@ public class CadastroProdutoController implements Initializable {
         formatoInvalidoQMsg.setVisible(false);
 
         try {
-            BigDecimal precoV;
-            BigDecimal precoC;
             int quantidade;
-            try {
-                precoV = new BigDecimal(precoVendaFIeld.getText().replace(",", "."));
-            } catch (NumberFormatException e) {
-                formatoInvalidoPVMsg.setVisible(true);
-                return;
-            }
-            try {
-                precoC = new BigDecimal(precoCustoFIeld.getText().replace(",", "."));
-            } catch (NumberFormatException e) {
+            BigDecimal precoV, precoC;
+            try{
+                precoC = produtoRN.validarPrecos(precoCustoFIeld.getText());
+            } catch (RNException e) {
                 formatoInvalidoPCMsg.setVisible(true);
                 return;
             }
-            try {
-                quantidade = Integer.parseInt(quantidadeField.getText());
-            } catch (NumberFormatException e) {
+            try{
+                precoV = produtoRN.validarPrecos(precoVendaFIeld.getText());
+            } catch (RNException e) {
+                formatoInvalidoPCMsg.setVisible(true);
+                return;
+            }
+            try{
+                quantidade = produtoRN.validarQuant(quantidadeField.getText());
+            } catch (RNException e) {
                 formatoInvalidoQMsg.setVisible(true);
                 return;
             }
@@ -109,7 +108,7 @@ public class CadastroProdutoController implements Initializable {
 
             HelloApplication.changeScreen("estoqueView.fxml");
         } catch(NumberFormatException e) {
-            Alerta.mostrarAlerta(TipoAlerta.ERRO, "Formato inválido!", "Preços e quantidade devem conter%napenas números");
+            Alerta.mostrarAlerta(TipoAlerta.ERRO, "Formato inválido!", "Preços e quantidade devem conter apenas números");
         } catch(RNException e) {
             Alerta.mostrarAlerta(TipoAlerta.ERRO, "Erro de validação!", e.getMessage());
         }

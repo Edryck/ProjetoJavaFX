@@ -1,6 +1,7 @@
 package com.example.main.model.rn;
 
 import com.example.main.model.dao.UsuarioDAO;
+import com.example.main.model.vo.Usuario;
 
 public class UsuarioRN {
     private final UsuarioDAO cadastroDAO = new UsuarioDAO();
@@ -14,7 +15,7 @@ public class UsuarioRN {
     }
 
     public boolean autenticao (String email, String senha) {
-        main.model.vo.Usuario usuario = cadastroDAO.login(email);
+        Usuario usuario = cadastroDAO.login(email);
 
         if (usuario == null) {
             return false;
@@ -23,7 +24,7 @@ public class UsuarioRN {
     }
 
     public void cadastro(String nome, String email, String senha) {
-        main.model.vo.Usuario usuario = new main.model.vo.Usuario();
+        Usuario usuario = new Usuario();
 
         usuario.setNomeUsuario(nome);
         usuario.setemailUsuario(email);

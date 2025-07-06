@@ -25,4 +25,7 @@ public class VisaoGeralController {
     void handleButtonEstoque() {
         HelloApplication.changeScreen("estoqueView.fxml");
     }
+
+    @FXML
+    void handleButtonVendas() { HelloApplication.changeScreen("vendaView.fxml");}
 }

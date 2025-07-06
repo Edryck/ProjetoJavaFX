@@ -6,7 +6,7 @@ public class Produto {
     private String idProduto;
     private String marca;
     private String descricao;
-    private Integer quantidade;
+    private int quantidade;
     private String categoria;
     private String fornecedor;
     private BigDecimal precoCusto;
@@ -16,7 +16,7 @@ public class Produto {
 
     public Produto() {}
 
-    public Produto(String idCodigo, String marca, String descricaoProduto, Integer quantidade, String categoriaProduto, String fornecedorProduto, BigDecimal precoCusto, BigDecimal precoVenda, String imagem) {
+    public Produto(String idCodigo, String marca, String descricaoProduto, int quantidade, String categoriaProduto, String fornecedorProduto, BigDecimal precoCusto, BigDecimal precoVenda, String imagem) {
         this.idProduto = idCodigo;
         this.marca = marca;
         this.descricao = descricaoProduto;
@@ -52,11 +52,11 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public Integer getQuantidade() {
+    public int getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(Integer quantidade) {
+    public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
 

@@ -2,16 +2,17 @@ package com.example.main.model.dao;
 
 import com.example.main.connection.ConnectionFactory;
 import com.example.main.enums.TipoAlerta;
+import com.example.main.interfaces.UsuarioInterface;
+import com.example.main.model.vo.Usuario;
 import com.example.main.util.Alerta;
 import javafx.application.Platform;
-import main.model.vo.Usuario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UsuarioDAO implements ManipulacaoUsuario {
+public class UsuarioDAO implements UsuarioInterface {
     @Override
     public boolean emailJaExiste (String email){
         String sql = "SELECT * FROM usuarios WHERE emailUsuario = ?";
@@ -61,7 +62,7 @@ public class UsuarioDAO implements ManipulacaoUsuario {
     @Override
     public Usuario login(String email) {
         String sql = "SELECT * FROM usuarios WHERE emailUsuario = ?";
-        main.model.vo.Usuario usuario = null;
+        Usuario usuario = null;
 
         Connection connection = ConnectionFactory.getConnection();
         if(connection == null) {

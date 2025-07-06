@@ -17,8 +17,6 @@ public class HelloApplication extends Application {
     // Armazena o caminho da view
     private static final String caminhoView = "/com/example/main/application/auth/assets/view/";
 
-
-
     @Override
     public void start(Stage primaryStage) throws IOException {
         URL fxmlLocation = getClass().getResource(caminhoView + "visaoGeral.fxml"); // Alterar depois

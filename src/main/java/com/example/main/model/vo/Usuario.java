@@ -1,4 +1,4 @@
-package main.model.vo;
+package com.example.main.model.vo;
 
 public class Usuario {
     private Integer idUsuario;

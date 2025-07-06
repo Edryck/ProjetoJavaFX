@@ -1,8 +1,8 @@
-package com.example.main.model.dao;
+package com.example.main.interfaces;
 
-import main.model.vo.Usuario;
+import com.example.main.model.vo.Usuario;
 
-public interface ManipulacaoUsuario {
+public interface UsuarioInterface {
     boolean emailJaExiste (String email);
     void cadastrar (Usuario usuario);
     Usuario login (String email);

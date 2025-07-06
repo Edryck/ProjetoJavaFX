@@ -1,6 +1,6 @@
 package com.example.main.util;
 
-import com.example.main.controller.AlertaController;
+import com.example.main.controller.utils.AlertaController;
 import com.example.main.enums.TipoAlerta;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

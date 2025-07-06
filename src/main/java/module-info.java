@@ -24,4 +24,10 @@ module com.example.main {
     exports com.example.main.controller;
     opens com.example.main.model.vo to javafx.fxml, javafx.base;
     exports com.example.main.model.vo;
+    exports com.example.main.controller.estoque;
+    opens com.example.main.controller.estoque to javafx.fxml;
+    exports com.example.main.controller.utils;
+    opens com.example.main.controller.utils to javafx.fxml;
+    exports com.example.main.controller.venda;
+    opens com.example.main.controller.venda to javafx.fxml;
 }

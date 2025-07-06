@@ -2,30 +2,23 @@ package com.example.main.model.dao;
 
 import com.example.main.connection.ConnectionFactory;
 import com.example.main.enums.TipoAlerta;
+import com.example.main.exceptions.DAOException;
+import com.example.main.interfaces.EstoqueInterface;
 import com.example.main.model.vo.Produto;
 import com.example.main.util.Alerta;
-import javafx.application.Platform;
 
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProdutosDAO implements ManipulacaoDeEstoque {
-    /**
-     * Este método é utilizado para cadastrar produtos no banco de dados, caso seja o cadastro deste primeiro
-     * deverá ser usado está função para cadastrar, caso contrário, deverá utilizar o método para atualizar produto.
-     * @param produto Produto instânciado.
-     */
-    public void cadastrar(Produto produto){
+public class ProdutosDAO implements EstoqueInterface {
+    @Override
+    public void cadastrar(Produto produto) {
         String sql = "INSERT INTO produto (idProduto, marca, descricao, categoria, quantidade, precoCusto, precoVenda, imagem, fornecedor, ativo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        Connection connection = ConnectionFactory.getConnection();
-        if(connection == null) {
-            Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Conexão com o Banco de Dados", "Erro inesperado: Não foi possível conectar com o banco de dados. Tente novamente.");
-            return;
-        }
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+        try(Connection connection = ConnectionFactory.getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql)) {
 
             ps.setString(1, produto.getIdProduto());
             ps.setString(2, produto.getMarca());
@@ -40,36 +33,28 @@ public class ProdutosDAO implements ManipulacaoDeEstoque {
 
             ps.executeUpdate();
         } catch (SQLException e) {
-            Platform.runLater(() -> Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Erro no acesso ao dados", "Não foi possível acessar os dados."));
-            System.err.println("Erro ao acessar o banco de dados: " + e.getMessage());
+            System.err.println("Erro: Cadastro de produtos. " + e.getMessage());
+            throw new DAOException("Não foi possível cadastrar o produto no banco de dados.");
         }
     }
 
-    /**
-     * Este método atualizar as informações de um produto já cadastrado no banco de dados, não será mudado
-     * o id do produto, apenas outras informações como descrição, preço (Custo e Venda), marca, etc.
-     * @param produto Produto que será atualizado.
-     */
+    @Override
     public void editar (Produto produto){
     }
-    
+
     public void atualizarDescricao (String idProduto, String descricao) {
         String sql = "UPDATE produto SET descricao = ? WHERE idProduto = ?";
 
-        Connection connection = ConnectionFactory.getConnection();
-        if(connection == null) {
-            Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Conexão com o Banco de Dados", "Erro inesperado: Não foi possível conectar com o banco de dados. Tente novamente.");
-            return;
-        }
-        try(PreparedStatement ps = connection.prepareStatement(sql)) {
+        try(Connection connection = ConnectionFactory.getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, descricao);
             ps.setString(2, idProduto);
 
             ps.executeUpdate();
         } catch (SQLException e) {
-            Platform.runLater(() -> Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Erro no acesso ao dados", "Erro inesperado: Não foi possível acessar os dados. Tente novamente."));
-            System.err.println("Erro ao acessar o banco de dados: " + e.getMessage());
-            throw new RuntimeException(e);
+            Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Erro no acesso ao dados", "Erro inesperado: Não foi possível alterar a descrição do produto.");
+            System.err.println("Erro: Atualizar descrição do produto. " + e.getMessage());
+            throw new DAOException("Não foi possível atualizar a descrição do produto.");
         }
     }
 
@@ -82,55 +67,37 @@ public class ProdutosDAO implements ManipulacaoDeEstoque {
     public void atualizarQuant (String idProduto, int quantidade){
         String sql = "UPDATE produto SET quantidade = quantidade + ? WHERE idProduto = ?";
 
-        Connection connection = ConnectionFactory.getConnection();
-        if(connection == null) {
-            Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Conexão com o Banco de Dados", "Erro inesperado: Não foi possível conectar com o banco de dados. Tente novamente.");
-            return;
-        }
-        try(PreparedStatement ps = connection.prepareStatement(sql)) {
+        try(Connection connection = ConnectionFactory.getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setInt(1, quantidade);
             ps.setString(2, idProduto);
 
             ps.executeUpdate();
         } catch (SQLException e) {
-            Platform.runLater(() -> Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Erro no acesso ao dados", "Erro inesperado: Não foi possível acessar os dados. Tente novamente."));
-            System.err.println("Erro ao acessar o banco de dados: " + e.getMessage());
-            throw new RuntimeException(e);
+            Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Erro no acesso ao dados", "Erro inesperado: Não foi possível atualizar a quantidade do produto. Tente novamente.");
+            System.err.println("Erro: Atualizar quantidade do produto. " + e.getMessage());
+            throw new DAOException("Não foi possível atualizar a quantidade do produto.");
         }
     }
 
-    /**
-     * Este método "exclui" um produto, como nada deve ser apagado do banco de dados, ele apenas atualizar o estado
-     * produto para inativo.
-     * @param idProduto O código do produto.
-     * @param ativo Boolean do produto para saber se ele está desativado (0) ou ativado (1).
-     */
+    @Override
     public void desativar (String idProduto, boolean ativo){
         String sql = "UPDATE produto SET ativo = ? WHERE idProduto = ?";
 
-        Connection connection = ConnectionFactory.getConnection();
-        if(connection == null) {
-            Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Conexão com o Banco de Dados", "Erro inesperado: Não foi possível conectar com o banco de dados. Tente novamente.");
-            return;
-        }
-        try(PreparedStatement ps = connection.prepareStatement(sql)) {
+        try(Connection connection = ConnectionFactory.getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setBoolean(1, ativo);
             ps.setString(2, idProduto);
 
             ps.executeUpdate();
         } catch (SQLException e) {
-            Platform.runLater(() -> Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Erro no acesso ao dados", "Erro inesperado: Não foi possível acessar os dados. Tente novamente."));
-            System.err.println("Erro ao acessar o banco de dados: " + e.getMessage());
-            throw new RuntimeException(e);
+            Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Erro no acesso ao dados", "Erro inesperado: Não foi possível desativar o produto. Tente novamente.");
+            System.err.println("Erro: Desativar o produto. " + e.getMessage());
+            throw new DAOException("Não foi possível desativar o produto.");
         }
     }
 
-    /**
-     * Busca o produto no banco de dados. O input pode ser código do produto, marca, categoria, descrição e fornecedor, o método vai
-     * buscar todos que tiverem algo como o termo da pesquisa.
-     *
-     * @param busca Termo utilizado na pesquisa geral.
-     */
+    @Override
     public List<Produto> pesquisar(String busca){
         String sql = "SELECT * FROM produto WHERE ativo = true AND (idProduto LIKE ? OR " +
                 "marca LIKE ? OR descricao LIKE ? OR " +
@@ -139,12 +106,8 @@ public class ProdutosDAO implements ManipulacaoDeEstoque {
         List<Produto> encontrado = new ArrayList<>();
         String encontradoFormatado = "%" + busca + "%";
 
-        Connection connection = ConnectionFactory.getConnection();
-        if(connection == null) {
-            Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Conexão com o Banco de Dados", "Erro inesperado: Não foi possível conectar com o banco de dados. Tente novamente.");
-            return null;
-        }
-        try(PreparedStatement ps = connection.prepareStatement(sql)) {
+        try(Connection connection = ConnectionFactory.getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, encontradoFormatado);
             ps.setString(2, encontradoFormatado);
             ps.setString(3, encontradoFormatado);
@@ -167,25 +130,49 @@ public class ProdutosDAO implements ManipulacaoDeEstoque {
                 }
             }
         } catch (SQLException e) {
-            Platform.runLater(() -> Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Erro no acesso ao dados", "Erro inesperado: Não foi possível acessar os dados. Tente novamente."));
-            System.err.println("Erro ao acessar o banco de dados: " + e.getMessage());
+            Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Erro no acesso aos dados", "Erro inesperado: Não foi possível realizar a pesquisa. Tente novamente.");
+            System.err.println("Erro: Pesquisa de produtos" + e.getMessage());
+            throw new DAOException("Não foi possível realizar pesquisa de produtos.");
         }
         return encontrado;
     }
 
-    /**
-     * Lista todos os produtos cadastrados no estoque.
-     */
+    public Produto pesquisarCod(String codigo) {
+        String sql = "SELECT * FROM produto WHERE ativo = true AND idProduto = ?";
+        Produto produto = null;
+
+        try(Connection connection = ConnectionFactory.getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setString(1, codigo);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    produto = new Produto();
+                    produto.setIdProduto(rs.getString("idProduto"));
+                    produto.setMarca(rs.getString("marca"));
+                    produto.setDescricao(rs.getString("descricao"));
+                    produto.setQuantidade(rs.getInt("quantidade"));
+                    produto.setCategoria(rs.getString("categoria"));
+                    produto.setPrecoCusto(rs.getBigDecimal("precoCusto"));
+                    produto.setPrecoVenda(rs.getBigDecimal("precoVenda"));
+                    produto.setAtivo(rs.getBoolean("ativo"));
+                }
+            }
+        } catch (SQLException e) {
+            Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Erro no acesso aos dados", "Erro inesperado: Não foi possível realizar a pesquisa. Tente novamente.");
+            System.err.println("Erro: Pesquisa de produtos por código. " + e.getMessage());
+            throw new DAOException("Não foi possível realizar pesquisa de produtos.");
+        }
+        return produto;
+    }
+
+    @Override
     public List<Produto> listarProdutos(){
         String sql = "SELECT * FROM produto WHERE ativo = true";
         List<Produto> lista = new ArrayList<>();
 
-        Connection connection = ConnectionFactory.getConnection();
-        if(connection == null) {
-            Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Conexão com o Banco de Dados", "Não foi possível conectar com o banco de dados.");
-            return null;
-        }
-        try(Statement st = connection.createStatement();
+        try(Connection connection = ConnectionFactory.getConnection();
+            Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(sql)) {
                 while (rs.next()) {
                     Produto produto = new Produto();
@@ -202,22 +189,20 @@ public class ProdutosDAO implements ManipulacaoDeEstoque {
                     lista.add(produto);
                 }
         } catch (SQLException e) {
-            Platform.runLater(() -> Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Erro no acesso ao dados", "Não foi possível acessar os dados."));
-            System.err.println("Erro ao acessar o banco de dados: " + e.getMessage());
+            Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Erro no acesso aos dados", "Não foi possível listar os produtos. Tente novamente.");
+            System.err.println("Erro: Listar produtos. " + e.getMessage());
+            throw new DAOException("Não foi possível listar os produtos.");
         }
         return lista;
     }
 
+    @Override
     public List<Produto> listarProdutoBE(){
         String sql = "SELECT * FROM produto WHERE ativo = true AND quantidade < 5";
         List<Produto> lista = new ArrayList<>();
 
-        Connection connection = ConnectionFactory.getConnection();
-        if(connection == null) {
-            Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Conexão com o Banco de Dados", "Não foi possível conectar com o banco de dados.");
-            return null;
-        }
-        try(Statement st = connection.createStatement();
+        try(Connection connection = ConnectionFactory.getConnection();
+            Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(sql)) {
             while (rs.next()) {
                 Produto produto = new Produto();
@@ -234,22 +219,20 @@ public class ProdutosDAO implements ManipulacaoDeEstoque {
                 lista.add(produto);
             }
         } catch (SQLException e) {
-            Platform.runLater(() -> Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Erro no acesso ao dados", "Não foi possível acessar os dados."));
-            System.err.println("Erro ao acessar o banco de dados: " + e.getMessage());
+            Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Erro no acesso ao dados", "Não foi possível listar os produtos com baixo estoque. Tente novamente.");
+            System.err.println("Erro: Não foi possível listar os produtos com baixo estoque. " + e.getMessage());
+            throw new DAOException("Não foi possível listar os produto com baixo estoque.");
         }
         return lista;
     }
 
+    @Override
     public BigDecimal valorEstoque() {
         String sql = "SELECT SUM(precoCusto * quantidade) FROM produto WHERE ativo = true";
         BigDecimal valorTotal = BigDecimal.ZERO;
 
-        Connection connection = ConnectionFactory.getConnection();
-        if(connection == null) {
-            Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Conexão com o Banco de Dados", "Erro inesperado: Não foi possível conectar com o banco de dados. Tente novamente.");
-            return valorTotal;
-        }
-        try (Statement st = connection.createStatement();
+        try (Connection connection = ConnectionFactory.getConnection();
+             Statement st = connection.createStatement();
              ResultSet rs = st.executeQuery(sql)) {
 
             if (rs.next()) {
@@ -260,20 +243,18 @@ public class ProdutosDAO implements ManipulacaoDeEstoque {
             }
         } catch (SQLException e) {
             System.err.println("Erro ao calcular o valor total em estoque: " + e.getMessage());
+            throw new DAOException("Não foi possível calcular o valor total do estoque.");
         }
         return valorTotal;
     }
 
+    @Override
     public Integer quantProdutosEst() {
         String sql = "SELECT SUM(quantidade) AS total_de_itens FROM produto WHERE ativo = true";
         int quantProd = 0;
 
-        Connection connection = ConnectionFactory.getConnection();
-        if(connection == null) {
-            Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Conexão com o Banco de Dados", "Não foi possível conectar com o banco de dados.");
-            return null;
-        }
-        try (PreparedStatement ps = connection.prepareStatement(sql);
+        try (Connection connection = ConnectionFactory.getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
             if (rs.next()) {
                 quantProd = rs.getInt("total_de_itens");
@@ -281,22 +262,19 @@ public class ProdutosDAO implements ManipulacaoDeEstoque {
 
         } catch (SQLException e) {
             System.err.println("Erro ao calcular o total de itens em estoque: " + e.getMessage());
-            e.printStackTrace();
+            throw new DAOException("Não foi possível calcular a quantidade de produtos em estoque.");
         }
 
         return quantProd;
     }
 
+    @Override
     public boolean codigoJaExiste (String codigo){
         String sql = "SELECT * FROM produto WHERE idProduto = ?";
         boolean codigoExiste = false;
 
-        Connection connection = ConnectionFactory.getConnection();
-        if(connection == null) {
-            Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Conexão com o Banco de Dados", "Erro inesperado: Não foi possível conectar com o banco de dados. Tente novamente.");
-            return false;
-        }
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+        try(Connection connection = ConnectionFactory.getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, codigo);
 
             try (ResultSet rs = ps.executeQuery()) {
@@ -305,8 +283,9 @@ public class ProdutosDAO implements ManipulacaoDeEstoque {
                 }
             }
         } catch (SQLException e) {
-            Platform.runLater(() -> Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Erro no acesso ao dados", "Erro inesperado: Não foi possível acessar os dados. Tente novamente."));
-            System.err.println("Erro ao acessar o banco de dados: " + e.getMessage());
+            Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Erro no acesso ao dados", "Erro inesperado: Não foi possível conferir se o código já foi cadastrado no sistema. Tente novamente.");
+            System.err.println("Erro: Conferir se o código já foi cadastrado. " + e.getMessage());
+            throw new DAOException("Falha ao validar o código digitado.");
         }
         return codigoExiste;
     }

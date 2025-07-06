@@ -1,4 +1,4 @@
-package com.example.main.controller;
+package com.example.main.controller.estoque;
 
 import com.example.main.HelloApplication;
 import com.example.main.model.rn.ProdutoRN;
@@ -7,6 +7,7 @@ import com.example.main.util.FormatadorMoeda;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -14,9 +15,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import org.kordamp.ikonli.javafx.FontIcon;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class EstoqueController implements Initializable {
@@ -90,6 +93,54 @@ public class EstoqueController implements Initializable {
 
     @FXML
     private TextField pesquisarProduto;
+
+    @FXML
+    void handleButtonVendas() {
+        HelloApplication.changeScreen("vendaView.fxml");
+    }
+
+    @FXML
+    void handleCadastroProduto() {
+        HelloApplication.changeScreen("cadastroProdutoView.fxml");
+    }
+
+    @FXML
+    void handleButtonVisaoGeral() {
+        HelloApplication.changeScreen("visaoGeral.fxml");
+    }
+
+    @FXML
+    void handlePesquisarProduto() {
+        String termo = pesquisarProduto.getText();
+        pesquisarProduto(termo);
+    }
+
+    @FXML
+    void handleEditarProduto(Produto produto) {
+        try {
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("/com/example/main/application/auth/assets/view/editarProdutoView.fxml"));
+            DialogPane dialogPane = loader.load();
+
+            EditarProdutoController formController = loader.getController();
+
+            formController.carregarProduto(produto);
+
+            Dialog<Produto> dialog = new Dialog<>();
+            dialog.setDialogPane(dialogPane);
+            dialog.setTitle("Editar Produto");
+            formController.setDialog(dialog);
+
+            Optional<Produto> resultado = dialog.showAndWait();
+
+            // Se o produto editado foi retornado, atualiza no banco
+            resultado.ifPresent(produtoEditado -> {
+                produtoRN.atualizarProd(produtoEditado); // Você precisará criar este método no seu DAO
+                carregarDados();
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -193,29 +244,8 @@ public class EstoqueController implements Initializable {
         quantProdutosCadastrados.setText(String.valueOf(todosProdutos.size()));
     }
 
-    @FXML
-    void handleCadastroProduto() {
-        HelloApplication.changeScreen("cadastroProdutoView.fxml");
-    }
-
-    @FXML
-    void handleButtonVisaoGeral() {
-        HelloApplication.changeScreen("visaoGeral.fxml");
-    }
-
     public void pesquisarProduto(String termo) {
         List<Produto> resultadoDaBusca = produtoRN.pesquisar(termo);
         carregarTabelaPrincipal(resultadoDaBusca);
-    }
-
-    @FXML
-    void handlePesquisarProduto() {
-        String termo = pesquisarProduto.getText();
-        pesquisarProduto(termo);
-    }
-
-    @FXML
-    void handleEditarProduto(Produto produto) {
-        HelloApplication.changeScreen("editarProdutoView.fxml");
     }
 }
