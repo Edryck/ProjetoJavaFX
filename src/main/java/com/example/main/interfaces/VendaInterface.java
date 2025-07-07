@@ -2,8 +2,10 @@ package com.example.main.interfaces;
 
 import com.example.main.model.vo.Venda;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 public interface VendaInterface {
     /**
@@ -43,4 +45,21 @@ public interface VendaInterface {
      * @param novoStatus O novo status (ex: "FINALIZADA", "CANCELADA").
      */
     void atualizarStatus(int id, String novoStatus);
+    /**
+     * NOVO: Calcula e retorna a soma do valorTotal de todas as vendas finalizadas.
+     * @return Um BigDecimal com o valor total.
+     */
+    BigDecimal getValorTotalVendas();
+
+    /**
+     * NOVO: Conta o número total de vendas finalizadas.
+     * @return Um int com a quantidade de vendas.
+     */
+    int getQuantidadeTotalDeVendas();
+
+    /**
+     * NOVO: Busca um resumo das vendas (quantidade e valor total) realizadas no dia de hoje.
+     * @return Um Mapa contendo as chaves "total" (BigDecimal) e "quantidade" (int).
+     */
+    Map<String, Object> getResumoVendasDeHoje();
 }

@@ -14,46 +14,44 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-public class PedidoCompraRN {
+public class ItemPedidoRN {
     private final PedidoCompraDAO pedidoDAO = new PedidoCompraDAO();
     private final ItemPedidoDAO itemPedidoDAO = new ItemPedidoDAO();
-    private final ProdutoDAO produtoDAO = new ProdutoDAO();
+    private final ProdutoDAO produtoDAO = new ProdutoDAO(); // Precisaremos dele para dar entrada no estoque
 
     /**
-     * Salvamento de um novo pedido de compra completo, usando uma transação.
+     * Orquestra o salvamento de um novo pedido de compra completo, usando uma transação.
      */
     public void registrarNovoPedido(PedidoCompra pedido) {
+        // --- VALIDAÇÕES DE NEGÓCIO ---
         if (pedido.getFornecedor() == null) {
-            throw new RNException("Um fornecedor deve ser selecionado para o pedido.");
+            throw new RNException("Um fornecedor deve ser selecionado.");
         }
-        if (pedido.getItens().isEmpty()) {
+        if (pedido.getItens() == null || pedido.getItens().isEmpty()) {
             throw new RNException("O pedido deve conter pelo menos um item.");
         }
+        // Outras validações...
 
         Connection connection = null;
-        try {
-            connection = ConnectionFactory.getConnection();
-            connection.setAutoCommit(false); // 1. INICIA A TRANSAÇÃO
+        try {connection = ConnectionFactory.getConnection();
+            connection.setAutoCommit(false); // Inicia a transação
 
-            // Define o status inicial do pedido
-            pedido.setStatus(StatusCompra.PENDENTE);
-
-            // 2. Salva o "cabeçalho" do pedido e obtém o ID gerado
+            // Salva o "cabeçalho" do pedido e obtém o ID gerado
             int pedidoId = pedidoDAO.salvar(pedido);
 
+            // Associa cada item ao ID do pedido e salva
             for (ItemPedido item : pedido.getItens()) {
                 item.setIdPedido(pedidoId);
                 itemPedidoDAO.salvar(item);
             }
 
-            connection.commit();
+            connection.commit(); // Confirma todas as operações no banco
 
         } catch (SQLException e) {
             try {
-                if (connection != null) connection.rollback();
+                if (connection != null) connection.rollback(); // Desfaz tudo em caso de erro
             } catch (SQLException ex) {
-                System.err.println("Erro crítico ao tentar fazer rollback da transação.");
-                ex.printStackTrace();
+                e.printStackTrace(); // Erro ao tentar fazer o rollback
             }
             throw new DAOException("Erro ao salvar o pedido no banco de dados.");
         } finally {
@@ -69,11 +67,11 @@ public class PedidoCompraRN {
     }
 
     /**
-     * Recebimento de um pedido, atualizando o status do pedido e o estoque dos produtos.
+     * Orquestra o recebimento de um pedido, atualizando o status e o estoque.
      */
     public void receberPedido(PedidoCompra pedido) {
-        if (pedido.getStatus() != StatusCompra.PENDENTE) {
-            throw new RNException("Apenas pedidos com status 'PENDENTE' podem ser recebidos.");
+        if (pedido == null || pedido.getStatus() != StatusCompra.PENDENTE) {
+            throw new RNException("Apenas pedidos pendentes podem ser recebidos.");
         }
 
         Connection connection = null;
@@ -81,26 +79,29 @@ public class PedidoCompraRN {
             connection = ConnectionFactory.getConnection();
             connection.setAutoCommit(false);
 
-            List<ItemPedido> itensDoPedido = itemPedidoDAO.buscarPorPedidoId(pedido.getIdPedido());
+            // 1. Busca os itens do pedido no banco
+            List<ItemPedido> itensRecebidos = itemPedidoDAO.buscarPorPedidoId(pedido.getIdPedido());
 
-            for (ItemPedido item : itensDoPedido) {
+            // 2. Para cada item recebido, dá entrada no estoque
+            for (ItemPedido item : itensRecebidos) {
                 produtoDAO.atualizarQuant(item.getProduto().getIdProduto(), item.getQuantidade());
             }
 
+            // 3. Atualiza o status do pedido para FINALIZADO
             pedidoDAO.atualizarStatus(pedido.getIdPedido(), StatusCompra.FINALIZADO);
 
             connection.commit();
 
         } catch (SQLException e) {
             try { if (connection != null) connection.rollback(); } catch (SQLException ex) { e.printStackTrace(); }
-            throw new DAOException("Erro ao dar entrada no estoque do pedido.");
+            throw new DAOException("Erro ao dar entrada no estoque.");
         } finally {
-            // Bloco finally para fechar a conexão
+
         }
     }
 
-    // Demais métodos de listagem
-    public List<PedidoCompra> listarTodosPedidos() {
+    // Métodos simples que apenas repassam a chamada para o DAO
+    public List<PedidoCompra> listarTodos() {
         return pedidoDAO.listarTodos();
     }
 }

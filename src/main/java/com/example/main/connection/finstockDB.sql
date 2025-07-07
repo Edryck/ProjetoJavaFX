@@ -1,4 +1,4 @@
-/*-- Cria o Banco de dados e usa ele
+-- Cria o Banco de dados e usa ele
 create database finstock;
 use finstock;
 
@@ -64,4 +64,12 @@ create table pedidos_compra (
   statusPedido varchar(20) not null, -- PENDENTE, FINALIZADO, CANCELADO
   primary key (id_pedido),
   foreign key (idFornecedor) references fornecedor(idFornecedor)
-);*/
+);
+
+create table itensPedido (
+	pedidoId int not null auto_increment primary key,
+	idProduto varchar(15) not null,
+	quantidade int not null,
+	precoPedido decimal(10,2),
+	foreign key (idProduto) references produto(idProduto)
+);

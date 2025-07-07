@@ -39,7 +39,27 @@ public class ProdutoDAO implements EstoqueInterface {
     }
 
     @Override
-    public void editar (Produto produto){
+    public void atualizar(Produto produto) {
+        String sql = "UPDATE produto SET marca = ?, descricao = ?, categoria = ?, precoCusto = ?, precoVenda = ?, quantidade = ?, fornecedor = ? WHERE idProduto = ?";
+
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, produto.getMarca());
+            ps.setString(2, produto.getDescricao());
+            ps.setString(3, produto.getCategoria());
+            ps.setBigDecimal(4, produto.getPrecoCusto());
+            ps.setBigDecimal(5, produto.getPrecoVenda());
+            ps.setInt(6, produto.getQuantidade());
+            ps.setString(7, produto.getFornecedor());
+            ps.setString(8, produto.getIdProduto()); // O ID para o WHERE
+
+            ps.executeUpdate();
+            System.out.println("Produto ID " + produto.getIdProduto() + " atualizado com sucesso.");
+
+        } catch (SQLException e) {
+            throw new DAOException("Erro ao atualizar produto.");
+        }
     }
 
     public void atualizarDescricao (String idProduto, String descricao) {

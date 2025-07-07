@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.main.controller.relatorio.RelatorioController">
+    <VBox layoutX="12.0" prefHeight="600.0" prefWidth="200.0" style="-fx-background-color: rgba(72, 86, 101, 1);" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Pane prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10;">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <VBox.margin>
+                <Insets left="10.0" top="110.0" />
+            </VBox.margin>
+            <FontIcon iconLiteral="mdi2h-home-outline" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" text="󰚡" />
+            <Label blendMode="MULTIPLY" layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="100.0" text="Visão Geral">
+                <font>
+                    <Font name="Arial Bold" size="18.0" />
+                </font>
+                <padding>
+                    <Insets top="10.0" />
+                </padding>
+            </Label>
+        </Pane>
+        <Pane fx:id="buttonEstoque" accessibleRole="BUTTON" prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10;" stylesheets="@../styles/stylesheet.css">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <VBox.margin>
+                <Insets left="10.0" />
+            </VBox.margin>
+            <padding>
+                <Insets left="10.0" />
+            </padding>
+            <FontIcon iconLiteral="mdi2p-package-variant-closed" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
+            <Label blendMode="MULTIPLY" layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="100.0" text="Estoque">
+                <font>
+                    <Font name="Arial Bold" size="18.0" />
+                </font>
+                <padding>
+                    <Insets top="10.0" />
+                </padding>
+            </Label>
+        </Pane>
+        <Pane fx:id="buttonVendas" accessibleRole="BUTTON" prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10;">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <VBox.margin>
+                <Insets left="10.0" />
+            </VBox.margin>
+            <FontIcon iconLiteral="mdi2c-cart-outline" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
+            <Label blendMode="MULTIPLY" layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="100.0" text="Vendas">
+                <font>
+                    <Font name="Arial Bold" size="18.0" />
+                </font>
+                <padding>
+                    <Insets top="10.0" />
+                </padding>
+            </Label>
+        </Pane>
+        <Pane fx:id="buttonFornecedores" accessibleRole="BUTTON" prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10;">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <VBox.margin>
+                <Insets left="10.0" />
+            </VBox.margin>
+            <FontIcon iconLiteral="mdi2t-truck-outline" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
+            <Label blendMode="MULTIPLY" layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="125.0" text="Fornecedores">
+                <font>
+                    <Font name="Arial Bold" size="18.0" />
+                </font>
+                <padding>
+                    <Insets top="10.0" />
+                </padding>
+            </Label>
+        </Pane>
+        <Pane fx:id="buttonRelatorios" accessibleRole="BUTTON" prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10; -fx-background-color: rgba(255, 255, 255);" styleClass="sombra_menu" stylesheets="@../styles/stylesheet.css">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <VBox.margin>
+                <Insets left="10.0" />
+            </VBox.margin>
+            <FontIcon iconLiteral="mdi2f-file-chart" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
+            <Label blendMode="MULTIPLY" layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="100.0" text="Relatórios">
+                <font>
+                    <Font name="Arial Bold" size="18.0" />
+                </font>
+                <padding>
+                    <Insets top="10.0" />
+                </padding>
+            </Label>
+        </Pane>
+        <Pane prefHeight="243.0" prefWidth="235.0" />
+        <Pane fx:id="buttonSair" accessibleRole="BUTTON" prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10;">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <VBox.margin>
+                <Insets left="10.0" />
+            </VBox.margin>
+            <FontIcon iconLiteral="mdi2l-logout" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
+            <Label blendMode="MULTIPLY" layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="133.0" text="Sair">
+                <font>
+                    <Font name="Arial Bold" size="18.0" />
+                </font>
+                <padding>
+                    <Insets top="10.0" />
+                </padding>
+            </Label>
+        </Pane>
+    </VBox>
+    <AnchorPane layoutX="288.0" layoutY="1.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: rgba(255, 255, 255);" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Pane prefHeight="600.0" prefWidth="765.0" style="-fx-background-color: rgba(255, 255, 255);" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane prefHeight="50.0" prefWidth="800.0" style="-fx-background-color: rgba(72, 86, 101, 1);" styleClass="sombra_menu" stylesheets="@../styles/stylesheet.css">
+               <children>
+                  <Label layoutX="25.0" layoutY="7.0" prefHeight="38.0" prefWidth="131.0" text="Relatórios" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutY="50.0" prefHeight="450.0" prefWidth="800.0">
+               <children>
+                  <Label layoutX="15.0" layoutY="15.0" text="Selecione o relatório que deseja:">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </Label>
+                  <ToggleButton fx:id="vendaPeriodo" layoutX="40.0" layoutY="75.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="220.0" styleClass="payment-button" stylesheets="@../styles/stylesheet.css" text="Vendas por Período">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="relatoriosToggleGroup" />
+                     </toggleGroup>
+                  </ToggleButton>
+                  <ToggleButton fx:id="produtoMaisVendido" layoutX="290.0" layoutY="75.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="220.0" styleClass="payment-button" stylesheets="@../styles/stylesheet.css" text="Produtos Mais Vendidos" toggleGroup="$relatoriosToggleGroup" />
+                  <ToggleButton fx:id="vendaCategoria" layoutX="560.0" layoutY="75.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="220.0" styleClass="payment-button" stylesheets="@../styles/stylesheet.css" text="Vendas por Categoria de Produto" toggleGroup="$relatoriosToggleGroup" />
+                  <ToggleButton fx:id="vendaFormaPag" layoutX="40.0" layoutY="115.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="220.0" styleClass="payment-button" stylesheets="@../styles/stylesheet.css" text="Vendas por Forma de Pagamento" toggleGroup="$relatoriosToggleGroup" />
+                  <ToggleButton fx:id="inventarioAtualVal" layoutX="40.0" layoutY="175.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="220.0" styleClass="payment-button" stylesheets="@../styles/stylesheet.css" text="Inventário Atual Valorizado" toggleGroup="$relatoriosToggleGroup" />
+                  <ToggleButton fx:id="produtoBaixoEstoque" layoutX="300.0" layoutY="175.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="220.0" styleClass="payment-button" stylesheets="@../styles/stylesheet.css" text="Produtos com Estoque Baixo" toggleGroup="$relatoriosToggleGroup" />
+                  <ToggleButton fx:id="curvaABCProduto" layoutX="560.0" layoutY="175.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="220.0" styleClass="payment-button" stylesheets="@../styles/stylesheet.css" text="Curva ABC de Produtos" toggleGroup="$relatoriosToggleGroup" />
+                  <Label layoutX="45.0" layoutY="50.0" text="Relatórios de Vendas">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="45.0" layoutY="155.0" text="Relatórios de Estoque">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </Label>
+                  <ToggleButton fx:id="DRE" layoutX="40.0" layoutY="235.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="220.0" styleClass="payment-button" stylesheets="@../styles/stylesheet.css" text="DRE" toggleGroup="$relatoriosToggleGroup" />
+                  <ToggleButton fx:id="fluxoCaixa" layoutX="305.0" layoutY="235.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="220.0" styleClass="payment-button" stylesheets="@../styles/stylesheet.css" text="Fluxo de Caixa" toggleGroup="$relatoriosToggleGroup" />
+                  <Label layoutX="45.0" layoutY="215.0" text="Relatórios Financeiros">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </Label>
+                  <ToggleButton fx:id="historicoPedidoFornecedor" layoutX="40.0" layoutY="295.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="220.0" styleClass="payment-button" stylesheets="@../styles/stylesheet.css" text="Histórico de Pedidos p/ Fornecedor" toggleGroup="$relatoriosToggleGroup" />
+                  <Label layoutX="50.0" layoutY="275.0" text="Relatório de Compras e Fornecedores">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="buttonGerar" layoutX="625.0" layoutY="385.0" mnemonicParsing="false" onAction="#handleButtonGerarRelatorio" prefWidth="150.0" style="-fx-background-radius: 15; -fx-border-radius: 15;" styleClass="buttons" stylesheets="@../styles/stylesheet.css" text="Gerar Relatório" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="buttonExportar" layoutX="450.0" layoutY="385.0" mnemonicParsing="false" onAction="#handleButtonExportar" prefHeight="25.0" prefWidth="150.0" style="-fx-background-radius: 15; -fx-border-radius: 15;" styleClass="buttons" stylesheets="@../styles/stylesheet.css" text="Exportar Relatório" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+         </children></Pane>
+    </AnchorPane>
+</AnchorPane>

@@ -102,6 +102,6 @@ public class VendaRN {
     }
 
     public BigDecimal valorTotalVendas() {
-        return vendaDAO.valorTotalVendas();
+        return vendaDAO.getValorTotalVendas();
     }
 }

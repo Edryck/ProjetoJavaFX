@@ -135,8 +135,8 @@
                     <Insets />
                 </opaqueInsets>
                 <children>
-                    <FontIcon iconLiteral="mdi2c-cog-outline" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
-                    <Label blendMode="MULTIPLY" layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="133.0" text="Configurações">
+                    <FontIcon iconLiteral="mdi2l-logout" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
+                    <Label blendMode="MULTIPLY" layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="133.0" text="Sair">
                         <font>
                             <Font name="Arial Bold" size="18.0" />
                         </font>

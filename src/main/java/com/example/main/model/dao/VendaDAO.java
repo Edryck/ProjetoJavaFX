@@ -6,7 +6,6 @@ import com.example.main.enums.TipoAlerta;
 import com.example.main.exceptions.DAOException;
 import com.example.main.interfaces.VendaInterface;
 import com.example.main.model.vo.ItemVenda;
-import com.example.main.model.vo.Produto;
 import com.example.main.model.vo.Venda;
 import com.example.main.util.Alerta;
 
@@ -14,7 +13,9 @@ import java.math.BigDecimal;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class VendaDAO implements VendaInterface {
     @Override
@@ -164,7 +165,8 @@ public class VendaDAO implements VendaInterface {
         return listaVendas;
     }
 
-    public BigDecimal valorTotalVendas() {
+    @Override
+    public BigDecimal getValorTotalVendas() {
         String sql = "SELECT SUM(valorTotal) FROM venda WHERE statusVenda = 'FINALIZADA'";
         BigDecimal valorTotal = BigDecimal.ZERO;
 
@@ -192,4 +194,42 @@ public class VendaDAO implements VendaInterface {
 
     @Override
     public void atualizarStatus(int id, String novoStatus) {}
+
+    @Override
+    public Map<String, Object> getResumoVendasDeHoje() {
+        String sql = "SELECT SUM(valorTotal) as total, COUNT(idVenda) as quantidade FROM venda WHERE DATE(dataVenda) = CURDATE()";
+        Map<String, Object> resumo = new HashMap<>();
+        resumo.put("total", BigDecimal.ZERO);
+        resumo.put("quantidade", 0);
+
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            if (rs.next()) {
+                if (rs.getBigDecimal("total") != null) {
+                    resumo.put("total", rs.getBigDecimal("total"));
+                }
+                resumo.put("quantidade", rs.getInt("quantidade"));
+            }
+        } catch (SQLException e) {
+            throw new DAOException("Erro ao buscar resumo de vendas do dia.");
+        }
+        return resumo;
+    }
+
+    @Override
+    public int getQuantidadeTotalDeVendas() {
+        String sql = "SELECT COUNT(idVenda) as quantidade FROM venda WHERE statusVenda = 'FINALIZADA'";
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt("quantidade");
+            }
+        } catch (SQLException e) {
+            throw new DAOException("Erro ao contar o total de vendas.");
+        }
+        return 0;
+    }
 }

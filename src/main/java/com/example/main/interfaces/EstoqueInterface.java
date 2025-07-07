@@ -18,7 +18,7 @@ public interface EstoqueInterface {
      * o id do produto, apenas outras informações como descrição, preço (Custo e Venda), marca, etc.
      * @param produto Produto que será atualizado.
      */
-    void editar (Produto produto);
+    void atualizar (Produto produto);
 
     void atualizarDescricao (String idProduto, String descricao);
 

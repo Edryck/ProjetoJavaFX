@@ -54,7 +54,7 @@
     -fx-border-color: #bdc3c7;
     -fx-border-width: 1px;
     -fx-border-radius: 15px;
-    -fx-background-radius: 5px;
+    -fx-background-radius: 15px;
     -fx-padding: 5px 15px;
 }
 
@@ -66,4 +66,8 @@
     -fx-background-color: #1e3231;
     -fx-text-fill: white;
     -fx-border-color: #1e3231;
+    -fx-border-width: 1px;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+    -fx-padding: 5px 15px;
 }

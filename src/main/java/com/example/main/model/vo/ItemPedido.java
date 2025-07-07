@@ -3,7 +3,7 @@ package com.example.main.model.vo;
 import java.math.BigDecimal;
 
 public class ItemPedido {
-    private int idItemPedido;
+    private int idPedido;
     private Produto produto;
     private int quantidade;
     private BigDecimal custoUnitarioPedido;
@@ -11,19 +11,19 @@ public class ItemPedido {
     public ItemPedido() {
     }
 
-    public ItemPedido(int idItemPedido, Produto produto, int quantidade, BigDecimal custoUnitarioPedido) {
-        this.idItemPedido = idItemPedido;
+    public ItemPedido(int idPedido, Produto produto, int quantidade, BigDecimal custoUnitarioPedido) {
+        this.idPedido = idPedido;
         this.produto = produto;
         this.quantidade = quantidade;
         this.custoUnitarioPedido = custoUnitarioPedido;
     }
 
-    public int getIdItemPedido() {
-        return idItemPedido;
+    public int getIdPedido() {
+        return idPedido;
     }
 
-    public void setIdItemPedido(int idItemPedido) {
-        this.idItemPedido = idItemPedido;
+    public void setIdPedido(int idPedido) {
+        this.idPedido = idPedido;
     }
 
     public Produto getProduto() {

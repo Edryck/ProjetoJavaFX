@@ -2,10 +2,10 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Point3D?>
-<?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -96,7 +96,7 @@
                   <Insets left="10.0" />
                </VBox.margin>
             </Pane>
-            <Pane fx:id="buttonRelatorios" accessibleRole="BUTTON" prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10;">
+            <Pane fx:id="buttonRelatorios" accessibleRole="BUTTON" onMouseClicked="#handleButtonRelatorio" prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10;">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -152,7 +152,7 @@
                   </Pane>
                   <Pane layoutX="13.0" layoutY="60.0" prefHeight="80.0" prefWidth="175.0" styleClass="blocos-info" stylesheets="@../styles/stylesheet.css">
                      <children>
-                        <Label layoutX="38.0" layoutY="5.0" text="Margem bruta">
+                        <Label layoutX="13.0" layoutY="4.0" text="Quantidade de vendas">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -194,12 +194,12 @@
                   </Pane>
                   <Pane layoutX="610.0" layoutY="60.0" prefHeight="80.0" prefWidth="175.0" styleClass="blocos-info" stylesheets="@../styles/stylesheet.css">
                      <children>
-                        <Label layoutX="31.0" layoutY="5.0" text="Total de pedidos">
+                        <Label layoutX="17.0" layoutY="4.0" text="Valor de vendas Hoje">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="totalPedidos" alignment="CENTER" layoutY="30.0" prefHeight="40.0" prefWidth="175.0" textAlignment="CENTER">
+                        <Label fx:id="vendasHoje" alignment="CENTER" layoutY="30.0" prefHeight="40.0" prefWidth="175.0" textAlignment="CENTER">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -226,16 +226,9 @@
                         </LineChart>
                      </children>
                   </Pane>
-                  <Pane layoutX="411.0" layoutY="178.0" prefHeight="200.0" prefWidth="375.0" styleClass="blocos_info" stylesheets="@../styles/stylesheet.css">
+                  <Pane layoutX="411.0" layoutY="178.0" prefHeight="200.0" prefWidth="375.0" styleClass="blocos-info" stylesheets="@../styles/stylesheet.css">
                      <children>
-                        <BarChart prefHeight="200.0" prefWidth="375.0" styleClass="blocos-info" title="Produtos mais vendidos">
-                           <xAxis>
-                              <CategoryAxis side="BOTTOM" />
-                           </xAxis>
-                           <yAxis>
-                              <NumberAxis side="LEFT" />
-                           </yAxis>
-                        </BarChart>
+                        <PieChart fx:id="graficoCategorias" layoutX="14.0" layoutY="14.0" prefHeight="173.0" prefWidth="345.0" />
                      </children>
                   </Pane>
                </children>
