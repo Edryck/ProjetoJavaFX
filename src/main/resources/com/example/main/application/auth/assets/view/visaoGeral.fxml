@@ -77,7 +77,7 @@
                   <Insets left="10.0" />
                </VBox.margin>
             </Pane>
-            <Pane fx:id="buttonFornecedores" accessibleRole="BUTTON" prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10;">
+            <Pane fx:id="buttonFornecedores" accessibleRole="BUTTON" onMouseClicked="#handleButtonFornecedores" prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10;">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

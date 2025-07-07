@@ -10,6 +10,7 @@ import com.example.main.model.vo.Produto;
 import com.example.main.model.vo.Venda;
 import com.example.main.util.Alerta;
 
+import java.math.BigDecimal;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -105,6 +106,83 @@ public class VendaDAO implements VendaInterface {
             throw new DAOException("Não foi possível listar os produtos.");
         }
         return listaVendas;
+    }
+
+    public List<Venda> listarPendentes() {
+        String sql = "SELECT * FROM venda WHERE statusVenda = 'PENDENTE'";
+        List<Venda> listaVendas = new ArrayList<>();
+
+        try(Connection connection = ConnectionFactory.getConnection();
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sql)) {
+            while (rs.next()) {
+                Venda venda = new Venda();
+
+                venda.setIdVenda(rs.getInt("idVenda"));
+                venda.setNomeCliente(rs.getString("nomeCliente"));
+                venda.setDataVenda(rs.getTimestamp("dataVenda").toLocalDateTime());
+                venda.setFormaPagamento(rs.getString("formaPagamento"));
+                venda.setValorTotal(rs.getBigDecimal("valorTotal"));
+                venda.setStatus(StatusVenda.valueOf(rs.getString("statusVenda")));
+                venda.setQuantidadeParcelas(rs.getInt("quantidadeParcelas"));
+
+                listaVendas.add(venda);
+            }
+        } catch (SQLException e) {
+            Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Erro no acesso aos dados", "Não foi possível listar os produtos. Tente novamente.");
+            System.err.println("Erro: Listar produtos. " + e.getMessage());
+            throw new DAOException("Não foi possível listar os produtos.");
+        }
+        return listaVendas;
+    }
+
+    public List<Venda> listarFinalizadas() {
+        String sql = "SELECT * FROM venda WHERE statusVenda = 'FINALIZADA'";
+        List<Venda> listaVendas = new ArrayList<>();
+
+        try(Connection connection = ConnectionFactory.getConnection();
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sql)) {
+            while (rs.next()) {
+                Venda venda = new Venda();
+
+                venda.setIdVenda(rs.getInt("idVenda"));
+                venda.setNomeCliente(rs.getString("nomeCliente"));
+                venda.setDataVenda(rs.getTimestamp("dataVenda").toLocalDateTime());
+                venda.setFormaPagamento(rs.getString("formaPagamento"));
+                venda.setValorTotal(rs.getBigDecimal("valorTotal"));
+                venda.setStatus(StatusVenda.valueOf(rs.getString("statusVenda")));
+                venda.setQuantidadeParcelas(rs.getInt("quantidadeParcelas"));
+
+                listaVendas.add(venda);
+            }
+        } catch (SQLException e) {
+            Alerta.mostrarAlerta(TipoAlerta.ERRO_BD, "Erro no acesso aos dados", "Não foi possível listar os produtos. Tente novamente.");
+            System.err.println("Erro: Listar produtos. " + e.getMessage());
+            throw new DAOException("Não foi possível listar os produtos.");
+        }
+        return listaVendas;
+    }
+
+    public BigDecimal valorTotalVendas() {
+        String sql = "SELECT SUM(valorTotal) FROM venda WHERE statusVenda = 'FINALIZADA'";
+        BigDecimal valorTotal = BigDecimal.ZERO;
+
+        try (Connection connection = ConnectionFactory.getConnection();
+             Statement st = connection.createStatement();
+             ResultSet rs = st.executeQuery(sql)) {
+
+            if (rs.next()) {
+                BigDecimal totalDoBanco = rs.getBigDecimal(1);
+                if (totalDoBanco != null) {
+                    valorTotal = totalDoBanco;
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Erro ao calcular o valor total de vendas: " + e.getMessage());
+            throw new DAOException("Não foi possível calcular o valor total de vendas.");
+        }
+        return valorTotal;
     }
 
     @Override

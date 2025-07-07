@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.main.controller.fornecedor.FornecedoresController">
+    <children>
+        <VBox layoutX="12.0" prefHeight="600.0" prefWidth="200.0" style="-fx-background-color: rgba(72, 86, 101, 1);" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Pane fx:id="buttonVisaoGeral" onMouseClicked="#handleButtonPrincipal" prefHeight="40.0" prefWidth="229.0">
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets left="10.0" top="110.0" />
+                    </VBox.margin>
+                    <children>
+                        <FontIcon iconLiteral="mdi2h-home-outline" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
+                        <Label blendMode="MULTIPLY" layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="100.0" text="Visão Geral">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                            <padding>
+                                <Insets top="10.0" />
+                            </padding>
+                        </Label>
+                    </children>
+                </Pane>
+                <Pane fx:id="buttonEstoque" accessibleRole="BUTTON" onMouseClicked="#handleButtonEstoque" prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10;" stylesheets="@../styles/stylesheet.css">
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <children>
+                        <FontIcon iconLiteral="mdi2p-package-variant-closed" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
+                        <Label blendMode="MULTIPLY" layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="100.0" text="Estoque">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                            <padding>
+                                <Insets top="10.0" />
+                            </padding>
+                        </Label>
+                    </children>
+                    <VBox.margin>
+                        <Insets left="10.0" />
+                    </VBox.margin>
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                </Pane>
+                <Pane fx:id="buttonVendas" accessibleRole="BUTTON" onMouseClicked="#handleButtonVendas" prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10;">
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <children>
+                        <FontIcon iconLiteral="mdi2c-cart-outline" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
+                        <Label blendMode="MULTIPLY" layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="100.0" text="Vendas">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                            <padding>
+                                <Insets top="10.0" />
+                            </padding>
+                        </Label>
+                    </children>
+                    <VBox.margin>
+                        <Insets left="10.0" />
+                    </VBox.margin>
+                </Pane>
+                <Pane fx:id="buttonFornecedores" accessibleRole="BUTTON" prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10; -fx-background-color: rgba(255, 255, 255);" styleClass="sombra_menu" stylesheets="@../styles/stylesheet.css">
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <children>
+                        <FontIcon iconLiteral="mdi2t-truck" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
+                        <Label blendMode="MULTIPLY" layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="125.0" text="Fornecedores">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                            <padding>
+                                <Insets top="10.0" />
+                            </padding>
+                        </Label>
+                    </children>
+                    <VBox.margin>
+                        <Insets left="10.0" />
+                    </VBox.margin>
+                </Pane>
+                <Pane fx:id="buttonRelatorios" accessibleRole="BUTTON" onMouseClicked="#handleButtonRelatorios" prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10;">
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <children>
+                        <FontIcon iconLiteral="mdi2f-file-chart-outline" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
+                        <Label blendMode="MULTIPLY" layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="100.0" text="Relatórios">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                            <padding>
+                                <Insets top="10.0" />
+                            </padding>
+                        </Label>
+                    </children>
+                    <VBox.margin>
+                        <Insets left="10.0" />
+                    </VBox.margin>
+                </Pane>
+                <Pane prefHeight="243.0" prefWidth="235.0" />
+                <Pane fx:id="buttonConfig" accessibleRole="BUTTON" onMouseClicked="#handeButtonConfig" prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10;">
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <children>
+                        <FontIcon iconLiteral="mdi2c-cog-outline" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
+                        <Label blendMode="MULTIPLY" layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="133.0" text="Configurações">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                            <padding>
+                                <Insets top="10.0" />
+                            </padding>
+                        </Label>
+                    </children>
+                    <VBox.margin>
+                        <Insets left="10.0" />
+                    </VBox.margin>
+                </Pane>
+            </children>
+        </VBox>
+        <AnchorPane layoutX="288.0" layoutY="1.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: rgba(255, 255, 255);" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Pane prefHeight="600.0" prefWidth="765.0" style="-fx-background-color: rgba(255, 255, 255);" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Pane prefHeight="50.0" prefWidth="800.0" style="-fx-background-color: rgba(72, 86, 101, 1);" styleClass="sombra_menu" stylesheets="@../styles/stylesheet.css">
+                     <children>
+                        <Label layoutX="25.0" layoutY="7.0" prefHeight="38.0" prefWidth="457.0" text="Gerenciar fornecedores" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutY="50.0" prefHeight="550.0" prefWidth="800.0">
+                     <children>
+                        <Pane layoutX="14.0" layoutY="8.0" prefHeight="35.0" prefWidth="780.0" style="-fx-background-color: rgba(72, 86, 101, 0.15); -fx-background-radius: 5; -fx-border-color: rgba(72, 86, 101, 0.5); -fx-border-radius: 5;" styleClass="blocos_info" stylesheets="@../styles/stylesheet.css">
+                           <children>
+                              <FontIcon iconLiteral="mdi2m-magnify" iconSize="30" layoutX="5.0" layoutY="29.0" />
+                              <TextField fx:id="pesquisarFornecedor" layoutX="35.0" layoutY="5.0" onAction="#handlePesquisarFornecedor" prefHeight="25.0" prefWidth="451.0" promptText="Pesquisar">
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor>
+                              </TextField>
+                              <Button fx:id="buttonCadastroProduto1" layoutX="500.0" layoutY="5.0" mnemonicParsing="false" onAction="#handleGerenciarPedidos" prefWidth="130.0" style="-fx-opacity: 90%;" styleClass="buttons" stylesheets="@../styles/stylesheet.css" text="Gerenciar pedidos" textFill="WHITE">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="buttonCadastroFornecedor" layoutX="640.0" layoutY="5.0" mnemonicParsing="false" onAction="#handleCadastroFornecedor" prefWidth="130.0" style="-fx-opacity: 90%;" styleClass="buttons" stylesheets="@../styles/stylesheet.css" text="Cadastrar fornecedor" textFill="WHITE">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <TableView id="tabelaProduto" fx:id="listaPedidos" layoutX="15.0" layoutY="75.0" prefHeight="200.0" prefWidth="780.0" style="-fx-background-radius: 5; -fx-border-radius: 5;" styleClass="sombra_menu" stylesheets="@../styles/stylesheet.css">
+                           <columns>
+                              <TableColumn id="idProduto" fx:id="codFornecedor" prefWidth="262.0" text="Fornecedor" />
+                              <TableColumn id="descricaoProduto" fx:id="colTelefone" prefWidth="146.0" text="Contato" />
+                              <TableColumn id="quantidadeProduto" fx:id="colDataPedido" prefWidth="102.0" text="Data do pedido" />
+                              <TableColumn id="precoCusto" fx:id="colStatusPedido" minWidth="0.0" prefWidth="102.0" text="Status do pedido" />
+                              <TableColumn id="precoVenda" fx:id="colValorNota" minWidth="0.0" prefWidth="104.0" text="Valor da nota" />
+                              <TableColumn id="idProduto" fx:id="colAcoesPedidos" prefWidth="60.0" text="Ações" />
+                           </columns>
+                        </TableView>
+                        <TableView id="tabelaProduto" fx:id="listaFornecedor" layoutX="15.0" layoutY="320.0" prefHeight="204.0" prefWidth="780.0" style="-fx-background-radius: 5; -fx-border-radius: 5;" styleClass="sombra_menu" stylesheets="@../styles/stylesheet.css">
+                           <columns>
+                              <TableColumn id="idProduto" fx:id="codFornecedorDados" prefWidth="311.0" text="Fornecedor" />
+                              <TableColumn id="descricaoProduto" fx:id="colEmail" prefWidth="164.0" text="Email" />
+                              <TableColumn id="quantidadeProduto" fx:id="colTelefone" prefWidth="136.0" text="Telefone" />
+                              <TableColumn id="precoCusto" fx:id="colStatusFornecedor" minWidth="0.0" prefWidth="107.0" text="Status" />
+                              <TableColumn id="precoCusto" fx:id="colAcoes" minWidth="0.0" prefWidth="60.0" text="Ações" />
+                           </columns>
+                        </TableView>
+                        <Label layoutX="20.0" layoutY="55.0" text="Tabela de pedidos">
+                           <font>
+                              <Font name="Arial" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="20.0" layoutY="300.0" text="Tabela de fornecedores">
+                           <font>
+                              <Font name="Arial" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children></Pane>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -196,7 +197,7 @@
                         </Pane>
                         <Pane layoutX="210.0" prefHeight="65.0" prefWidth="175.0" styleClass="blocos-info" stylesheets="@../styles/stylesheet.css">
                            <children>
-                              <Label alignment="CENTER" layoutY="43.0" prefHeight="17.0" prefWidth="175.0" text="Vendas não finalizadas">
+                              <Label alignment="CENTER" layoutY="43.0" prefHeight="17.0" prefWidth="175.0" text="Vendas pendentes">
                                  <font>
                                     <Font name="Arial" size="12.0" />
                                  </font>
@@ -225,22 +226,22 @@
                      </cursor></Button>
                   <Pane layoutX="10.0" layoutY="175.0" prefHeight="240.0" prefWidth="775.0">
                      <children>
-                        <Button fx:id="buttonFilterTodos" mnemonicParsing="false" onAction="#handleFilterTodos" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: rgba(255, 255, 255, 0); -fx-border-radius: 50; -fx-border-color: rgba(30, 50, 49, 0.5);" text="Todas">
+                        <ToggleButton fx:id="buttonFilterTodos" mnemonicParsing="false" onAction="#handleFilterTodos" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: rgba(255, 255, 255, 0); -fx-border-radius: 50; -fx-border-color: rgba(30, 50, 49, 0.5);" text="Todas">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
-                        </Button>
-                        <Button fx:id="buttonFilterFinalizados" layoutX="110.0" mnemonicParsing="false" onAction="#handleFilterFinalizados" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: rgba(255, 255, 255, 0); -fx-border-radius: 50; -fx-border-color: rgba(30, 50, 49, 0.5);" text="Finalizadas">
+                        </ToggleButton>
+                        <ToggleButton fx:id="buttonFilterFinalizados" layoutX="110.0" mnemonicParsing="false" onAction="#handleFilterFinalizados" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: rgba(255, 255, 255, 0); -fx-border-radius: 50; -fx-border-color: rgba(30, 50, 49, 0.5);" text="Finalizadas">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
-                        </Button>
-                        <Button fx:id="buttonFilterPendentes" layoutX="220.0" mnemonicParsing="false" onAction="#handleFilterPendentes" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: rgba(255, 255, 255, 0); -fx-border-radius: 50; -fx-border-color: rgba(30, 50, 49, 0.5);" text="Pendentes">
+                        </ToggleButton>
+                        <ToggleButton fx:id="buttonFilterPendentes" layoutX="220.0" mnemonicParsing="false" onAction="#handleFilterPendentes" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: rgba(255, 255, 255, 0); -fx-border-radius: 50; -fx-border-color: rgba(30, 50, 49, 0.5);" text="Pendentes">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
-                        </Button>
-                        <TableView layoutY="36.0" prefHeight="200.0" prefWidth="775.0" style="-fx-border-radius: 5; -fx-background-radius: 5;">
+                        </ToggleButton>
+                        <TableView fx:id="tabelaVendas" layoutY="36.0" prefHeight="200.0" prefWidth="775.0" style="-fx-border-radius: 5; -fx-background-radius: 5;">
                           <columns>
                             <TableColumn fx:id="colCliente" prefWidth="345.0" text="Cliente" />
                               <TableColumn fx:id="colValorTotal" prefWidth="91.0" text="Valor total" />

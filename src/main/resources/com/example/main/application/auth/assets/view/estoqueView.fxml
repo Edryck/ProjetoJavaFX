@@ -13,289 +13,239 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(255, 255, 255, 1);"
-            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.main.controller.estoque.EstoqueController">
-    <VBox layoutX="12.0" prefHeight="600.0" prefWidth="200.0" style="-fx-background-color: rgba(72, 86, 101, 1);"
-          AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(255, 255, 255, 1);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.main.controller.estoque.EstoqueController">
+    <VBox layoutX="12.0" prefHeight="600.0" prefWidth="200.0" style="-fx-background-color: rgba(72, 86, 101, 1);" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
         <children>
-            <Pane fx:id="buttonVisaoGeral" onMouseClicked="#handleButtonVisaoGeral" prefHeight="40.0" prefWidth="229.0"
-                  style="-fx-background-radius: 10 0 0 10;" stylesheets="@../styles/stylesheet.css">
+            <Pane fx:id="buttonVisaoGeral" onMouseClicked="#handleButtonVisaoGeral" prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10;" stylesheets="@../styles/stylesheet.css">
                 <opaqueInsets>
-                    <Insets/>
+                    <Insets />
                 </opaqueInsets>
                 <VBox.margin>
-                    <Insets left="10.0" top="110.0"/>
+                    <Insets left="10.0" top="110.0" />
                 </VBox.margin>
                 <children>
-                    <FontIcon iconLiteral="mdi2h-home-outline" iconSize="30" layoutX="6.0" layoutY="31.0"
-                              selectionEnd="0" selectionStart="0" tabSize="0"/>
-                    <Label blendMode="MULTIPLY" layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0"
-                           prefWidth="100.0" text="Visão Geral">
+                    <FontIcon iconLiteral="mdi2h-home-outline" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
+                    <Label blendMode="MULTIPLY" layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="100.0" text="Visão Geral">
                         <font>
-                            <Font name="Arial Bold" size="18.0"/>
+                            <Font name="Arial Bold" size="18.0" />
                         </font>
                         <padding>
-                            <Insets top="10.0"/>
+                            <Insets top="10.0" />
                         </padding>
                     </Label>
                 </children>
                 <cursor>
-                    <Cursor fx:constant="HAND"/>
+                    <Cursor fx:constant="HAND" />
                 </cursor>
             </Pane>
-            <Pane fx:id="buttonEstoque" accessibleRole="BUTTON" prefHeight="40.0" prefWidth="229.0"
-                  styleClass="bloco-selecionado" stylesheets="@../styles/stylesheet.css">
+            <Pane fx:id="buttonEstoque" accessibleRole="BUTTON" prefHeight="40.0" prefWidth="229.0" styleClass="bloco-selecionado" stylesheets="@../styles/stylesheet.css">
                 <opaqueInsets>
-                    <Insets/>
+                    <Insets />
                 </opaqueInsets>
                 <children>
-                    <FontIcon iconLiteral="mdi2p-package-variant" iconSize="30" layoutX="6.0" layoutY="31.0"
-                              selectionEnd="0" selectionStart="0" tabSize="0"/>
-                    <Label blendMode="MULTIPLY" layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0"
-                           prefWidth="100.0" text="Estoque">
+                    <FontIcon iconLiteral="mdi2p-package-variant" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
+                    <Label blendMode="MULTIPLY" layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="100.0" text="Estoque">
                         <font>
-                            <Font name="Arial Bold" size="18.0"/>
+                            <Font name="Arial Bold" size="18.0" />
                         </font>
                         <padding>
-                            <Insets top="10.0"/>
+                            <Insets top="10.0" />
                         </padding>
                     </Label>
                 </children>
                 <VBox.margin>
-                    <Insets left="10.0"/>
+                    <Insets left="10.0" />
                 </VBox.margin>
                 <padding>
-                    <Insets left="10.0"/>
+                    <Insets left="10.0" />
                 </padding>
                 <cursor>
-                    <Cursor fx:constant="HAND"/>
+                    <Cursor fx:constant="HAND" />
                 </cursor>
             </Pane>
-            <Pane fx:id="buttonVendas" accessibleRole="BUTTON" onMouseClicked="#handleButtonVendas" prefHeight="40.0"
-                  prefWidth="229.0" style="-fx-background-radius: 10 0 0 10;">
+            <Pane fx:id="buttonVendas" accessibleRole="BUTTON" onMouseClicked="#handleButtonVendas" prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10;">
                 <opaqueInsets>
-                    <Insets/>
+                    <Insets />
                 </opaqueInsets>
                 <children>
-                    <FontIcon iconLiteral="mdi2c-cart-outline" iconSize="30" layoutX="6.0" layoutY="31.0"
-                              selectionEnd="0" selectionStart="0" tabSize="0"/>
-                    <Label blendMode="MULTIPLY" layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0"
-                           prefWidth="100.0" text="Vendas">
+                    <FontIcon iconLiteral="mdi2c-cart-outline" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
+                    <Label blendMode="MULTIPLY" layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="100.0" text="Vendas">
                         <font>
-                            <Font name="Arial Bold" size="18.0"/>
+                            <Font name="Arial Bold" size="18.0" />
                         </font>
                         <padding>
-                            <Insets top="10.0"/>
+                            <Insets top="10.0" />
                         </padding>
                     </Label>
                 </children>
                 <VBox.margin>
-                    <Insets left="10.0"/>
+                    <Insets left="10.0" />
                 </VBox.margin>
                 <cursor>
-                    <Cursor fx:constant="HAND"/>
+                    <Cursor fx:constant="HAND" />
                 </cursor>
             </Pane>
-            <Pane fx:id="buttonFornecedores" accessibleRole="BUTTON" prefHeight="40.0" prefWidth="229.0"
-                  style="-fx-background-radius: 10 0 0 10;">
+            <Pane fx:id="buttonFornecedores" accessibleRole="BUTTON" onMouseClicked="#handleButtonFornecedores" prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10;">
                 <opaqueInsets>
-                    <Insets/>
+                    <Insets />
                 </opaqueInsets>
                 <children>
-                    <FontIcon iconLiteral="mdi2t-truck-outline" iconSize="30" layoutX="6.0" layoutY="31.0"
-                              selectionEnd="0" selectionStart="0" tabSize="0"/>
-                    <Label blendMode="MULTIPLY" layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0"
-                           prefWidth="125.0" text="Fornecedores">
+                    <FontIcon iconLiteral="mdi2t-truck-outline" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
+                    <Label blendMode="MULTIPLY" layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="125.0" text="Fornecedores">
                         <font>
-                            <Font name="Arial Bold" size="18.0"/>
+                            <Font name="Arial Bold" size="18.0" />
                         </font>
                         <padding>
-                            <Insets top="10.0"/>
+                            <Insets top="10.0" />
                         </padding>
                     </Label>
                 </children>
                 <VBox.margin>
-                    <Insets left="10.0"/>
+                    <Insets left="10.0" />
                 </VBox.margin>
                 <cursor>
-                    <Cursor fx:constant="HAND"/>
+                    <Cursor fx:constant="HAND" />
                 </cursor>
             </Pane>
-            <Pane fx:id="buttonRelatorios" accessibleRole="BUTTON" prefHeight="40.0" prefWidth="229.0"
-                  style="-fx-background-radius: 10 0 0 10;">
+            <Pane fx:id="buttonRelatorios" accessibleRole="BUTTON" prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10;">
                 <opaqueInsets>
-                    <Insets/>
+                    <Insets />
                 </opaqueInsets>
                 <children>
-                    <FontIcon iconLiteral="mdi2f-file-chart-outline" iconSize="30" layoutX="6.0" layoutY="31.0"
-                              selectionEnd="0" selectionStart="0" tabSize="0"/>
-                    <Label blendMode="MULTIPLY" layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0"
-                           prefWidth="100.0" text="Relatórios">
+                    <FontIcon iconLiteral="mdi2f-file-chart-outline" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
+                    <Label blendMode="MULTIPLY" layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="100.0" text="Relatórios">
                         <font>
-                            <Font name="Arial Bold" size="18.0"/>
+                            <Font name="Arial Bold" size="18.0" />
                         </font>
                         <padding>
-                            <Insets top="10.0"/>
+                            <Insets top="10.0" />
                         </padding>
                     </Label>
                 </children>
                 <VBox.margin>
-                    <Insets left="10.0"/>
+                    <Insets left="10.0" />
                 </VBox.margin>
                 <cursor>
-                    <Cursor fx:constant="HAND"/>
+                    <Cursor fx:constant="HAND" />
                 </cursor>
             </Pane>
-            <Pane prefHeight="243.0" prefWidth="235.0"/>
-            <Pane fx:id="buttonConfig" accessibleRole="BUTTON" prefHeight="40.0" prefWidth="229.0"
-                  style="-fx-background-radius: 10 0 0 10;">
+            <Pane prefHeight="243.0" prefWidth="235.0" />
+            <Pane fx:id="buttonConfig" accessibleRole="BUTTON" prefHeight="40.0" prefWidth="229.0" style="-fx-background-radius: 10 0 0 10;">
                 <opaqueInsets>
-                    <Insets/>
+                    <Insets />
                 </opaqueInsets>
                 <children>
-                    <FontIcon iconLiteral="mdi2c-cog-outline" iconSize="30" layoutX="6.0" layoutY="31.0"
-                              selectionEnd="0" selectionStart="0" tabSize="0"/>
-                    <Label blendMode="MULTIPLY" layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0"
-                           prefWidth="133.0" text="Configurações">
+                    <FontIcon iconLiteral="mdi2c-cog-outline" iconSize="30" layoutX="6.0" layoutY="31.0" selectionEnd="0" selectionStart="0" tabSize="0" />
+                    <Label blendMode="MULTIPLY" layoutX="40.0" layoutY="-5.0" lineSpacing="10.0" prefHeight="38.0" prefWidth="133.0" text="Configurações">
                         <font>
-                            <Font name="Arial Bold" size="18.0"/>
+                            <Font name="Arial Bold" size="18.0" />
                         </font>
                         <padding>
-                            <Insets top="10.0"/>
+                            <Insets top="10.0" />
                         </padding>
                     </Label>
                 </children>
                 <VBox.margin>
-                    <Insets left="10.0"/>
+                    <Insets left="10.0" />
                 </VBox.margin>
                 <cursor>
-                    <Cursor fx:constant="HAND"/>
+                    <Cursor fx:constant="HAND" />
                 </cursor>
             </Pane>
         </children>
     </VBox>
-    <AnchorPane layoutX="288.0" layoutY="1.0" prefHeight="600.0" prefWidth="765.0"
-                style="-fx-background-color: rgba(255, 255, 255);" AnchorPane.leftAnchor="200.0"
-                AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <AnchorPane layoutX="288.0" layoutY="1.0" prefHeight="600.0" prefWidth="765.0" style="-fx-background-color: rgba(255, 255, 255);" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <children>
-            <Pane prefHeight="600.0" prefWidth="765.0" style="-fx-background-color: rgba(255, 255, 255);"
-                  AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Pane prefHeight="600.0" prefWidth="765.0" style="-fx-background-color: rgba(255, 255, 255);" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                 <children>
-                    <Pane prefHeight="50.0" prefWidth="800.0" style="-fx-background-color: rgba(72, 86, 101, 1);"
-                          styleClass="sombra_menu" stylesheets="@../styles/stylesheet.css">
+                    <Pane prefHeight="50.0" prefWidth="800.0" style="-fx-background-color: rgba(72, 86, 101, 1);" styleClass="sombra_menu" stylesheets="@../styles/stylesheet.css">
                         <children>
-                            <Label layoutX="25.0" layoutY="7.0" prefHeight="38.0" prefWidth="131.0" text="Estoque"
-                                   textFill="WHITE">
+                            <Label layoutX="25.0" layoutY="7.0" prefHeight="38.0" prefWidth="131.0" text="Estoque" textFill="WHITE">
                                 <font>
-                                    <Font name="Arial Bold" size="20.0"/>
+                                    <Font name="Arial Bold" size="20.0" />
                                 </font>
                             </Label>
                         </children>
                     </Pane>
-                    <Pane layoutX="10.0" layoutY="132.0" prefHeight="35.0" prefWidth="620.0"
-                          style="-fx-background-color: rgba(72, 86, 101, 0.15); -fx-background-radius: 5; -fx-border-color: rgba(72, 86, 101, 0.5); -fx-border-radius: 5;"
-                          styleClass="blocos_info" stylesheets="@../styles/stylesheet.css">
+                    <Pane layoutX="10.0" layoutY="132.0" prefHeight="35.0" prefWidth="620.0" style="-fx-background-color: rgba(72, 86, 101, 0.15); -fx-background-radius: 5; -fx-border-color: rgba(72, 86, 101, 0.5); -fx-border-radius: 5;" styleClass="blocos_info" stylesheets="@../styles/stylesheet.css">
                         <children>
-                            <FontIcon iconLiteral="mdi2m-magnify" iconSize="30" layoutX="5.0" layoutY="29.0"/>
-                            <TextField fx:id="pesquisarProduto" layoutX="35.0" layoutY="5.0"
-                                       onAction="#handlePesquisarProduto" prefHeight="25.0" prefWidth="580.0"
-                                       promptText="Pesquisar produto">
+                            <FontIcon iconLiteral="mdi2m-magnify" iconSize="30" layoutX="5.0" layoutY="29.0" />
+                            <TextField fx:id="pesquisarProduto" layoutX="35.0" layoutY="5.0" onAction="#handlePesquisarProduto" prefHeight="25.0" prefWidth="580.0" promptText="Pesquisar produto">
                                 <cursor>
-                                    <Cursor fx:constant="TEXT"/>
+                                    <Cursor fx:constant="TEXT" />
                                 </cursor>
                             </TextField>
                         </children>
                     </Pane>
-                    <TableView id="tabelaProduto" fx:id="listaProdutosCad" layoutX="10.0" layoutY="175.0"
-                               prefHeight="250.0" prefWidth="780.0"
-                               style="-fx-background-radius: 5; -fx-border-radius: 5;" styleClass="sombra_menu"
-                               stylesheets="@../styles/stylesheet.css">
+                    <TableView id="tabelaProduto" fx:id="listaProdutosCad" layoutX="10.0" layoutY="175.0" prefHeight="250.0" prefWidth="780.0" style="-fx-background-radius: 5; -fx-border-radius: 5;" styleClass="sombra_menu" stylesheets="@../styles/stylesheet.css">
                         <columns>
-                            <TableColumn id="idProduto" fx:id="codProduto" prefWidth="99.0" text="Código"/>
-                            <TableColumn id="descricaoProduto" fx:id="colDescricao" prefWidth="369.0" text="Descrição"/>
-                            <TableColumn id="quantidadeProduto" fx:id="colQuantidade" prefWidth="78.0"
-                                         text="Quantidade"/>
-                            <TableColumn id="precoCusto" fx:id="colPrecoCusto" minWidth="0.0" prefWidth="97.0"
-                                         text="Preço de Custo"/>
-                            <TableColumn id="precoVenda" fx:id="colPrecoVenda" minWidth="0.0" prefWidth="92.0"
-                                         text="Preço de Venda"/>
-                            <TableColumn id="acao" fx:id="acao" prefWidth="42.0" text="Ação"/>
+                            <TableColumn id="idProduto" fx:id="codProduto" prefWidth="99.0" text="Código" />
+                            <TableColumn id="descricaoProduto" fx:id="colDescricao" prefWidth="369.0" text="Descrição" />
+                            <TableColumn id="quantidadeProduto" fx:id="colQuantidade" prefWidth="78.0" text="Quantidade" />
+                            <TableColumn id="precoCusto" fx:id="colPrecoCusto" minWidth="0.0" prefWidth="97.0" text="Preço de Custo" />
+                            <TableColumn id="precoVenda" fx:id="colPrecoVenda" minWidth="0.0" prefWidth="92.0" text="Preço de Venda" />
+                            <TableColumn id="acao" fx:id="acao" prefWidth="42.0" text="Ação" />
                         </columns>
                     </TableView>
-                    <Button fx:id="buttonCadastroProduto" layoutX="643.0" layoutY="137.0" mnemonicParsing="false"
-                            onAction="#handleCadastroProduto" style="-fx-opacity: 90%;" styleClass="buttons"
-                            stylesheets="@../styles/stylesheet.css" text="Cadastrar novo produto" textFill="WHITE">
+                    <Button fx:id="buttonCadastroProduto" layoutX="643.0" layoutY="137.0" mnemonicParsing="false" onAction="#handleCadastroProduto" style="-fx-opacity: 90%;" styleClass="buttons" stylesheets="@../styles/stylesheet.css" text="Cadastrar novo produto" textFill="WHITE">
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </Button>
                     <AnchorPane layoutY="60.0" prefHeight="65.0" prefWidth="800.0">
                         <children>
-                            <Pane layoutX="10.0" prefHeight="65.0" prefWidth="175.0" styleClass="blocos-info"
-                                  stylesheets="@../styles/stylesheet.css">
+                            <Pane layoutX="10.0" prefHeight="65.0" prefWidth="175.0" styleClass="blocos-info" stylesheets="@../styles/stylesheet.css">
                                 <children>
-                                    <Label alignment="CENTER" layoutY="43.0" prefHeight="17.0" prefWidth="175.0"
-                                           text="Valor total em estoque">
+                                    <Label alignment="CENTER" layoutY="43.0" prefHeight="17.0" prefWidth="175.0" text="Valor total em estoque">
                                         <font>
-                                            <Font name="Arial" size="12.0"/>
+                                            <Font name="Arial" size="12.0" />
                                         </font>
                                     </Label>
-                                    <Label fx:id="valorEstoque" alignment="CENTER" layoutY="22.0" prefHeight="21.0"
-                                           prefWidth="175.0">
+                                    <Label fx:id="valorEstoque" alignment="CENTER" layoutY="22.0" prefHeight="21.0" prefWidth="175.0">
                                         <font>
-                                            <Font size="15.0"/>
+                                            <Font size="15.0" />
                                         </font>
                                     </Label>
                                 </children>
                             </Pane>
-                            <Pane layoutX="610.0" prefHeight="65.0" prefWidth="175.0" styleClass="blocos-info"
-                                  stylesheets="@../styles/stylesheet.css">
+                            <Pane layoutX="610.0" prefHeight="65.0" prefWidth="175.0" styleClass="blocos-info" stylesheets="@../styles/stylesheet.css">
                                 <children>
-                                    <Label alignment="CENTER" layoutY="43.0" prefHeight="17.0" prefWidth="175.0"
-                                           text="Total de produtos cadastrados">
+                                    <Label alignment="CENTER" layoutY="43.0" prefHeight="17.0" prefWidth="175.0" text="Total de produtos cadastrados">
                                         <font>
-                                            <Font name="Arial" size="12.0"/>
+                                            <Font name="Arial" size="12.0" />
                                         </font>
                                     </Label>
-                                    <Label fx:id="quantProdutosCadastrados" alignment="CENTER" layoutY="22.0"
-                                           prefHeight="21.0" prefWidth="175.0">
+                                    <Label fx:id="quantProdutosCadastrados" alignment="CENTER" layoutY="22.0" prefHeight="21.0" prefWidth="175.0">
                                         <font>
-                                            <Font size="15.0"/>
+                                            <Font size="15.0" />
                                         </font>
                                     </Label>
                                 </children>
                             </Pane>
-                            <Pane layoutX="410.0" prefHeight="65.0" prefWidth="175.0" styleClass="blocos-info"
-                                  stylesheets="@../styles/stylesheet.css">
+                            <Pane layoutX="410.0" prefHeight="65.0" prefWidth="175.0" styleClass="blocos-info" stylesheets="@../styles/stylesheet.css">
                                 <children>
-                                    <Label alignment="CENTER" layoutY="43.0" prefHeight="17.0" prefWidth="175.0"
-                                           text="Produtos com baixo estoque">
+                                    <Label alignment="CENTER" layoutY="43.0" prefHeight="17.0" prefWidth="175.0" text="Produtos com baixo estoque">
                                         <font>
-                                            <Font name="Arial" size="12.0"/>
+                                            <Font name="Arial" size="12.0" />
                                         </font>
                                     </Label>
-                                    <Label fx:id="produtoBaixoEstoque" alignment="CENTER" layoutY="22.0"
-                                           prefHeight="21.0" prefWidth="175.0">
+                                    <Label fx:id="produtoBaixoEstoque" alignment="CENTER" layoutY="22.0" prefHeight="21.0" prefWidth="175.0">
                                         <font>
-                                            <Font size="15.0"/>
+                                            <Font size="15.0" />
                                         </font>
                                     </Label>
                                 </children>
                             </Pane>
-                            <Pane layoutX="210.0" prefHeight="65.0" prefWidth="175.0" styleClass="blocos-info"
-                                  stylesheets="@../styles/stylesheet.css">
+                            <Pane layoutX="210.0" prefHeight="65.0" prefWidth="175.0" styleClass="blocos-info" stylesheets="@../styles/stylesheet.css">
                                 <children>
-                                    <Label alignment="CENTER" layoutY="43.0" prefHeight="17.0" prefWidth="175.0"
-                                           text="Quantidade de Produtos">
+                                    <Label alignment="CENTER" layoutY="43.0" prefHeight="17.0" prefWidth="175.0" text="Quantidade de Produtos">
                                         <font>
-                                            <Font name="Arial" size="12.0"/>
+                                            <Font name="Arial" size="12.0" />
                                         </font>
                                     </Label>
-                                    <Label fx:id="quantidadeProdutos" alignment="CENTER" layoutY="22.0"
-                                           prefHeight="21.0" prefWidth="175.0">
+                                    <Label fx:id="quantidadeProdutos" alignment="CENTER" layoutY="22.0" prefHeight="21.0" prefWidth="175.0">
                                         <font>
-                                            <Font size="15.0"/>
+                                            <Font size="15.0" />
                                         </font>
                                     </Label>
                                 </children>
@@ -304,20 +254,18 @@
                     </AnchorPane>
                     <AnchorPane layoutY="435.0" prefHeight="165.0" prefWidth="800.0">
                         <children>
-                            <TableView fx:id="listaProdutoBE" layoutX="10.0" layoutY="25.0" prefHeight="133.0"
-                                       prefWidth="780.0" style="-fx-background-radius: 5; -fx-border-radius: 5;">
+                            <TableView fx:id="listaProdutoBE" layoutX="10.0" layoutY="25.0" prefHeight="133.0" prefWidth="780.0" style="-fx-background-radius: 5; -fx-border-radius: 5;">
                                 <columns>
-                                    <TableColumn fx:id="colCodigoBE" prefWidth="101.0" text="Código"/>
-                                    <TableColumn fx:id="colDescricaoBE" prefWidth="445.0" text="Descrição"/>
-                                    <TableColumn fx:id="colQuantBE" prefWidth="79.0" text="Quantidade"/>
-                                    <TableColumn fx:id="colPrecoCustoBE" prefWidth="109.0" text="Preço de Custo"/>
-                                    <TableColumn fx:id="acaoBE" prefWidth="43.0" text="Ação"/>
+                                    <TableColumn fx:id="colCodigoBE" prefWidth="101.0" text="Código" />
+                                    <TableColumn fx:id="colDescricaoBE" prefWidth="445.0" text="Descrição" />
+                                    <TableColumn fx:id="colQuantBE" prefWidth="79.0" text="Quantidade" />
+                                    <TableColumn fx:id="colPrecoCustoBE" prefWidth="109.0" text="Preço de Custo" />
+                                    <TableColumn fx:id="acaoBE" prefWidth="43.0" text="Ação" />
                                 </columns>
                             </TableView>
-                            <Label layoutX="15.0" layoutY="4.0" text="Produto com baixo estoque"
-                                   AnchorPane.leftAnchor="15.0">
+                            <Label layoutX="15.0" layoutY="4.0" text="Produto com baixo estoque" AnchorPane.leftAnchor="15.0">
                                 <font>
-                                    <Font name="Arial" size="15.0"/>
+                                    <Font name="Arial" size="15.0" />
                                 </font>
                             </Label>
                         </children>

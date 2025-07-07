@@ -30,4 +30,8 @@ module com.example.main {
     opens com.example.main.controller.utils to javafx.fxml;
     exports com.example.main.controller.venda;
     opens com.example.main.controller.venda to javafx.fxml;
+    exports com.example.main.controller.fornecedor;
+    opens com.example.main.controller.fornecedor to javafx.fxml;
+    exports com.example.main.enums;
+    opens com.example.main.enums to javafx.fxml;
 }

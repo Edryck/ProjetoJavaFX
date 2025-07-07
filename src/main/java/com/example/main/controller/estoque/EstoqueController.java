@@ -248,4 +248,9 @@ public class EstoqueController implements Initializable {
         List<Produto> resultadoDaBusca = produtoRN.pesquisar(termo);
         carregarTabelaPrincipal(resultadoDaBusca);
     }
+
+    @FXML
+    void handleButtonFornecedores() {
+        HelloApplication.changeScreen("fornecedoresView.fxml");
+    }
 }

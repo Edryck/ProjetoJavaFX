@@ -12,6 +12,7 @@ import com.example.main.model.vo.Produto;
 import com.example.main.model.vo.Venda;
 import com.example.main.util.Alerta;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -84,7 +85,23 @@ public class VendaRN {
         }
     }
 
-    public int listaTodasVendas() {
+    public List<Venda> listarTodasVendas() {
+        return vendaDAO.listarTodasVendas();
+    }
+
+   public int totalVendasPendentes() {
+        return vendaDAO.listarPendentes().size();
+   }
+
+    public int totalVendasFinalizadas() {
+        return vendaDAO.listarFinalizadas().size();
+    }
+
+    public int totalVendas() {
         return vendaDAO.listarTodasVendas().size();
+    }
+
+    public BigDecimal valorTotalVendas() {
+        return vendaDAO.valorTotalVendas();
     }
 }

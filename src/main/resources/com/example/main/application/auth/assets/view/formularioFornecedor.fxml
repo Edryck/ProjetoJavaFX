@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane prefHeight="400.0" prefWidth="150.0" style="-fx-background-radius: 0 0 10 10; -fx-border-radius: 0 0 10 10;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.main.controller.fornecedor.FormularioFornecedorController">
+    <children>
+        <DialogPane layoutX="9.0" layoutY="8.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="414.0">
+            <expandableContent>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
+            </expandableContent>
+            <header>
+                <Label alignment="CENTER" prefHeight="43.0" prefWidth="424.0" text="Formulário fornecedor">
+                    <font>
+                        <Font name="Arial" size="25.0" />
+                    </font>
+                </Label>
+            </header>
+        </DialogPane>
+        <FontIcon fx:id="buttonVoltarTela" accessibleRole="BUTTON" iconLiteral="mdi2a-arrow-left" iconSize="30" layoutX="14.0" layoutY="40.0" onMouseClicked="#handleVoltar" selectionEnd="0" tabSize="0" text="󰁍" />
+        <AnchorPane layoutX="5.0" layoutY="56.0" maxHeight="348.0" maxWidth="590.0" minHeight="220.0" minWidth="402.0" prefHeight="340.0" prefWidth="424.0">
+            <children>
+                <Label layoutX="70.0" layoutY="45.0" text="Nome" AnchorPane.leftAnchor="70.0">
+                    <font>
+                        <Font name="Arial" size="16.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="nomeFornecedorField" layoutX="65.0" layoutY="64.0" prefHeight="30.0" prefWidth="300.0" promptText="Informe o nome do fornecedor" styleClass="forms" stylesheets="@../styles/stylesheet.css" AnchorPane.leftAnchor="65.0">
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <font>
+                        <Font name="Arial" size="16.0" />
+                    </font>
+                </TextField>
+                <Label layoutX="70.0" layoutY="116.0" text="Email" AnchorPane.leftAnchor="70.0">
+                    <font>
+                        <Font name="Arial" size="16.0" />
+                    </font>
+                </Label>
+            <TextField fx:id="emailFornecedorField" layoutX="65.0" layoutY="136.0" prefHeight="30.0" prefWidth="300.0" promptText="Informe o email do fornecedor" styleClass="forms" stylesheets="@../styles/stylesheet.css">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <font>
+                  <Font name="Arial" size="16.0" />
+               </font>
+            </TextField>
+            <Label layoutX="65.0" layoutY="192.0" text="Telefone" AnchorPane.leftAnchor="70.0">
+               <font>
+                  <Font name="Arial" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="telefoneFornecedorField" layoutX="64.0" layoutY="212.0" prefHeight="30.0" prefWidth="300.0" promptText="Ex.: (00) 90000-0000" styleClass="forms" stylesheets="@../styles/stylesheet.css" AnchorPane.leftAnchor="65.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <font>
+                  <Font name="Arial" size="16.0" />
+               </font>
+            </TextField>
+                <Pane layoutX="65.0" layoutY="299.0" prefHeight="32.0" prefWidth="300.0" style="-fx-background-color: rgba(255, 255, 255);">
+                    <children>
+                        <Button fx:id="buttonDeletar" mnemonicParsing="false" onAction="#handleButtonDeletar" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: rgba(178,34,34);" styleClass="buttons" stylesheets="@../styles/stylesheet.css" text="Deletar" textFill="WHITE">
+                            <font>
+                                <Font name="Arial" size="14.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Button>
+                  <Button fx:id="buttonSalvar" layoutX="155.0" mnemonicParsing="false" onAction="#handleButtonSalvar" prefHeight="30.0" prefWidth="145.0" styleClass="buttons" stylesheets="@../styles/stylesheet.css" text="Salvar" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                    </children>
+                </Pane>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
