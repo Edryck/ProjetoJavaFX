@@ -1,10 +1,12 @@
 package com.example.main.controller.venda;
 
 import com.example.main.HelloApplication;
+import com.example.main.enums.StatusVenda;
 import com.example.main.enums.TipoAlerta;
-import com.example.main.model.rn.ProdutoRN;
+import com.example.main.exceptions.RNException;
 import com.example.main.model.rn.VendaRN;
 import com.example.main.model.vo.ItemVenda;
+import com.example.main.model.vo.Venda;
 import com.example.main.util.Alerta;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -21,12 +23,13 @@ import org.kordamp.ikonli.javafx.FontIcon;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class RegistrarVendaController implements Initializable {
     private final VendaRN vendaRN = new VendaRN();
-    private final ProdutoRN produtoRN = new ProdutoRN();
 
     @FXML
     private Button buttonAddProduto;
@@ -62,6 +65,12 @@ public class RegistrarVendaController implements Initializable {
     private TextField descontoVenda;
 
     @FXML
+    private TextField quantParcelas;
+
+    @FXML
+    private ToggleGroup pagamentoToggleGroup;
+
+    @FXML
     private ToggleButton formaPagCredito;
 
     @FXML
@@ -84,7 +93,7 @@ public class RegistrarVendaController implements Initializable {
 
     private final ObservableList<ItemVenda> carrinhoItens = FXCollections.observableArrayList();
 
-    public void atualizarTotais() {
+    public void atualizarTotais() throws NumberFormatException {
         BigDecimal subtotal = BigDecimal.ZERO;
         for (ItemVenda item : carrinhoItens) {
             BigDecimal totalItem = item.getPrecoUnitario().multiply(new BigDecimal(item.getQuantidade()));
@@ -97,7 +106,7 @@ public class RegistrarVendaController implements Initializable {
                 descontoPercentual = new BigDecimal(descontoVenda.getText());
             }
         } catch (NumberFormatException e) {
-
+            throw new RNException("Número inválido, atualização de totais, Registrar Venda. ");
         }
         BigDecimal valorDesconto = subtotal.multiply(descontoPercentual.divide(new BigDecimal(100)));
         BigDecimal totalFinal = subtotal.subtract(valorDesconto);
@@ -109,7 +118,10 @@ public class RegistrarVendaController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        quantParcelas.setVisible(false);
+
         carrinhoTableView.setItems(carrinhoItens);
+
         colQuant.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
         colCodItem.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getProduto().getIdProduto()));
@@ -122,6 +134,14 @@ public class RegistrarVendaController implements Initializable {
                     BigDecimal total = item.getPrecoUnitario().multiply(new BigDecimal(item.getQuantidade()));
                     return new SimpleObjectProperty<>(total);
                 });
+
+        pagamentoToggleGroup.selectedToggleProperty().addListener((observable, oldToggle, newToggle) -> {
+            if (newToggle == null) {
+                quantParcelas.setVisible(false);
+                return;
+            }
+            quantParcelas.setVisible(newToggle == formaPagCredito);
+        });
 
         descontoVenda.textProperty().addListener((obs, oldVal, newVal) -> atualizarTotais());
     }
@@ -151,8 +171,56 @@ public class RegistrarVendaController implements Initializable {
 
     @FXML
     void handleButtonRegistrar() {
-        String nomeC = nomeCliente.getText();
-        BigDecimal desconto = produtoRN.validarPrecos(descontoVenda.getText());
+        if (carrinhoItens.isEmpty()) {
+            Alerta.mostrarAlerta(TipoAlerta.ATENCAO, "Carrinho vazio!", "Não foi possível completar o registro, carrinho vazio.");
+        }
+        Toggle formaPagSelecionado = pagamentoToggleGroup.getSelectedToggle();
+
+        if (formaPagSelecionado == null) {
+            Alerta.mostrarAlerta(TipoAlerta.ATENCAO, "Forma de Pagamento", "Selecione uma forma de pagamento.");
+            return;
+        }
+
+        ToggleButton botaoSelecionado = (ToggleButton) formaPagSelecionado;
+        String formaPagamento = botaoSelecionado.getText();
+        Integer quantidadeParcelas = null;
+
+        if (formaPagamento.equals("Crédito")) {
+            try {
+                quantidadeParcelas = Integer.parseInt(quantParcelas.getText());
+                if (quantidadeParcelas <= 0) {
+                    Alerta.mostrarAlerta(TipoAlerta.ERRO, "Quantidade inválida!", "Qunatidade deve ser maior que zero.");
+                    throw new RNException("O número de parcelas deve ser maior que zero.");
+                }
+            } catch (NumberFormatException e) {
+                Alerta.mostrarAlerta(TipoAlerta.ERRO, "Número de parcelas inválido.", "Número de parcelas devem ser maior que zero.");
+                throw new RNException("Número de parcelas inválido.");
+            }
+        }
+        try {
+            String nomeC = nomeCliente.getText();
+            BigDecimal valorTotal = new BigDecimal(totalLabel.getText().replace("R$ ", "").replace(",", "."));
+            ToggleButton selectedToggle = (ToggleButton) pagamentoToggleGroup.getSelectedToggle();
+            String formaPag = selectedToggle.getText();
+
+            Venda novaVenda = new Venda();
+            novaVenda.setNomeCliente(nomeC);
+            novaVenda.setDataVenda(LocalDateTime.now());
+            novaVenda.setValorTotal(valorTotal);
+            novaVenda.setFormaPagamento(formaPag);
+            novaVenda.setQuantidadeParcelas(quantidadeParcelas);
+            if (formaPag.equals("Cartão de Crédito")) {
+                novaVenda.setStatus(StatusVenda.PENDENTE);
+            } else {
+                novaVenda.setStatus(StatusVenda.FINALIZADA);
+            }
+            novaVenda.setItens(carrinhoItens);
+
+            vendaRN.registrarVenda(novaVenda);
+            Alerta.mostrarAlerta(TipoAlerta.VENDA_REG, "Venda registrada!", "Nova venda registrada com sucesso!");
+        } catch (RNException | SQLException e) {
+            Alerta.mostrarAlerta(TipoAlerta.ERRO, "Falha ao registrar venda", "Não foi possível registrar venda. Tente novamente.");
+        }
     }
 
     @FXML

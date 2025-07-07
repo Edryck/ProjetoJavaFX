@@ -20,9 +20,9 @@ public class Venda {
     public Venda() {
     }
 
-    public Venda(Integer idVenda, LocalDateTime dataVenda, BigDecimal valorTotal, String formaPagamento, StatusVenda status, Integer quantidadeParcelas) {
+    public Venda(Integer idVenda, String nomeCliente, LocalDateTime dataVenda, BigDecimal valorTotal, String formaPagamento, StatusVenda status, Integer quantidadeParcelas) {
         this.idVenda = idVenda;
-
+        this.nomeCliente = nomeCliente;
         this.dataVenda = dataVenda;
         this.valorTotal = valorTotal;
         this.formaPagamento = formaPagamento;
@@ -36,6 +36,14 @@ public class Venda {
 
     public void setIdVenda(Integer idVenda) {
         this.idVenda = idVenda;
+    }
+
+    public String getNomeCliente() {
+        return nomeCliente;
+    }
+
+    public void setNomeCliente(String nomeCliente) {
+        this.nomeCliente = nomeCliente;
     }
 
     public LocalDateTime getDataVenda() {

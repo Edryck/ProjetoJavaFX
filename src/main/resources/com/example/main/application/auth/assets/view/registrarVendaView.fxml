@@ -8,7 +8,9 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
@@ -109,27 +111,33 @@
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Label>
-            <ToggleButton fx:id="formaPagDinheiro" layoutX="70.0" layoutY="480.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" styleClass="buttons-filter" text="Dinheiro">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ToggleButton>
-            <ToggleButton fx:id="formaPagCredito" layoutX="200.0" layoutY="480.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" styleClass="buttons-filter" text="Cartão de Crédito">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ToggleButton>
-            <TextField layoutX="200.0" layoutY="510.0" prefHeight="25.0" prefWidth="120.0" promptText="Quant de percelas" styleClass="forms" stylesheets="@../styles/stylesheet.css" />
-            <ToggleButton fx:id="formaPagDebito" layoutX="330.0" layoutY="480.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" styleClass="buttons-filter" text="Cartão de Débito">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ToggleButton>
-            <ToggleButton fx:id="formaPagPix" layoutX="460.0" layoutY="480.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" styleClass="buttons-filter" text="Pix">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ToggleButton>
+            <HBox alignment="CENTER" layoutX="70" layoutY="480" spacing="10.0">
+               <children>
+                  <fx:define>
+                     <ToggleGroup fx:id="pagamentoToggleGroup" />
+                  </fx:define>
+                  <ToggleButton fx:id="formaPagDinheiro" layoutX="70.0" layoutY="480.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" styleClass="payment-button" text="Dinheiro" toggleGroup="$pagamentoToggleGroup">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ToggleButton>
+                  <ToggleButton fx:id="formaPagCredito" layoutX="200.0" layoutY="480.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" styleClass="payment-button" text="Cartão de Crédito" toggleGroup="$pagamentoToggleGroup">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ToggleButton>
+                  <ToggleButton fx:id="formaPagDebito" layoutX="330.0" layoutY="480.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" styleClass="payment-button" text="Cartão de Débito" toggleGroup="$pagamentoToggleGroup">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ToggleButton>
+                  <ToggleButton fx:id="formaPagPix" layoutX="460.0" layoutY="480.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" styleClass="payment-button" text="Pix" toggleGroup="$pagamentoToggleGroup">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ToggleButton>
+               </children>
+            </HBox>
             <Button fx:id="buttonRegistrar" layoutX="287.5" layoutY="542.0" mnemonicParsing="false" onAction="#handleButtonRegistrar" prefHeight="30.0" prefWidth="300.0" styleClass="buttons" stylesheets="@../styles/stylesheet.css" text="Registrar" textFill="WHITE">
                <font>
                   <Font name="Arial" size="14.0" />
@@ -138,6 +146,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <TextField fx:id="quantParcelas" layoutX="215.0" layoutY="511.0" prefHeight="25.0" prefWidth="120.0" visible="false" promptText="Quant de percelas" styleClass="forms" stylesheets="@../styles/stylesheet.css" />
          </children>
       </Pane>
       <FontIcon fx:id="buttonVoltarTela" accessibleRole="BUTTON" iconLiteral="mdi2a-arrow-left" iconSize="30" layoutX="10.0" layoutY="10.0" onMouseClicked="#handleVoltar" selectionEnd="0" tabSize="0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />

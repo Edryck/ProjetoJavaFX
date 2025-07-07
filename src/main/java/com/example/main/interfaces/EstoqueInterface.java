@@ -22,6 +22,12 @@ public interface EstoqueInterface {
 
     void atualizarDescricao (String idProduto, String descricao);
 
+    /**
+     * Este método é utilizado para atualizar a quantidade do produto em estoque, seja ele adicionado após uma compra
+     * ou subtraído após uma venda.
+     * @param idProduto Código do produto.
+     * @param quantidade Quantidade que será mudada.
+     */
     void atualizarQuant (String idProduto, int quantidade);
 
     /**

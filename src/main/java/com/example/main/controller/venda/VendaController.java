@@ -1,8 +1,10 @@
 package com.example.main.controller.venda;
 
 import com.example.main.HelloApplication;
+import com.example.main.model.vo.Venda;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -10,7 +12,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
-public class VendaController {
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+public class VendaController implements Initializable {
 
     @FXML
     private Pane buttonConfig;
@@ -43,19 +48,19 @@ public class VendaController {
     private Pane buttonVisaoGeral;
 
     @FXML
-    private TableColumn<?, ?> colCliente;
+    private TableColumn<Venda, String> colCliente;
 
     @FXML
-    private TableColumn<?, ?> colData;
+    private TableColumn<Venda, LocalDateTime> colData;
 
     @FXML
-    private TableColumn<?, ?> colFormaPag;
+    private TableColumn<Venda, String> colFormaPag;
 
     @FXML
-    private TableColumn<?, ?> colStatus;
+    private TableColumn<Venda, String> colStatus;
 
     @FXML
-    private TableColumn<?, ?> colValorTotal;
+    private TableColumn<Venda, BigDecimal> colValorTotal;
 
     @FXML
     private TextField pesquisar;
@@ -73,7 +78,7 @@ public class VendaController {
     private Label vendasPendentes;
 
     @FXML
-    void handleButtonEstoque(MouseEvent event) {
+    void handleButtonEstoque() {
         HelloApplication.changeScreen("estoqueView.fxml");
     }
 

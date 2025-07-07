@@ -47,3 +47,23 @@
     -fx-border-radius: 10px;
     -fx-effect: dropShadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 5);
 }
+
+.payment-button {
+    -fx-background-color: white;
+    -fx-text-fill: #1e3231;
+    -fx-border-color: #bdc3c7;
+    -fx-border-width: 1px;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px 15px;
+}
+
+.payment-button:hover {
+    -fx-border-color: #1e3231;
+}
+
+.payment-button:selected {
+    -fx-background-color: #1e3231;
+    -fx-text-fill: white;
+    -fx-border-color: #1e3231;
+}

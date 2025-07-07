@@ -12,7 +12,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProdutosDAO implements EstoqueInterface {
+public class ProdutoDAO implements EstoqueInterface {
     @Override
     public void cadastrar(Produto produto) {
         String sql = "INSERT INTO produto (idProduto, marca, descricao, categoria, quantidade, precoCusto, precoVenda, imagem, fornecedor, ativo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -58,12 +58,7 @@ public class ProdutosDAO implements EstoqueInterface {
         }
     }
 
-    /**
-     * Este método é utilizado para atualizar a quantidade do produto em estoque, seja ele adicionado após uma compra
-     * ou subtraído após uma venda.
-     * @param idProduto Código do produto.
-     * @param quantidade Quantidade que será mudada.
-     */
+    @Override
     public void atualizarQuant (String idProduto, int quantidade){
         String sql = "UPDATE produto SET quantidade = quantidade + ? WHERE idProduto = ?";
 

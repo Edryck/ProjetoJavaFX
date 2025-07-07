@@ -1,19 +1,24 @@
 package com.example.main.model.rn;
 
+import com.example.main.connection.ConnectionFactory;
 import com.example.main.enums.TipoAlerta;
+import com.example.main.exceptions.DAOException;
 import com.example.main.exceptions.RNException;
 import com.example.main.model.dao.ItemVendaDAO;
+import com.example.main.model.dao.ProdutoDAO;
 import com.example.main.model.dao.VendaDAO;
 import com.example.main.model.vo.ItemVenda;
 import com.example.main.model.vo.Produto;
 import com.example.main.model.vo.Venda;
 import com.example.main.util.Alerta;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 public class VendaRN {
     private final ProdutoRN produtoRN = new ProdutoRN();
-    private final Produto produto = new Produto();
+    private final ProdutoDAO produtoDAO = new ProdutoDAO();
     private final VendaDAO vendaDAO = new VendaDAO();
     private final ItemVendaDAO itemVendaDAO = new ItemVendaDAO();
 
@@ -50,5 +55,36 @@ public class VendaRN {
             throw new RNException("Quantidade Inválida. Validação da venda.");
         }
         return quantidade;
+    }
+
+    public void registrarVenda(Venda venda) throws SQLException, RNException {
+        Connection connection = null;
+        try {
+            connection = ConnectionFactory.getConnection();
+            connection.setAutoCommit(false);
+
+            for (ItemVenda item : venda.getItens()) {
+                // Verificação para não ser quantidade não ser maior que a quantidade em estoque e a não se <= 0
+            }
+            int idVenda = vendaDAO.salvar(venda);
+            for (ItemVenda item : venda.getItens()) {
+                item.setIdVenda(idVenda);
+                itemVendaDAO.salvar(item);
+                produtoDAO.atualizarQuant(item.getProduto().getIdProduto(), -item.getQuantidade());
+            }
+            connection.commit();
+        } catch (DAOException e) {
+            if (connection != null) connection.rollback();
+            throw new RNException("Não foi possível registrar venda: registrar venda, VendaRN.");
+        } finally {
+            if (connection != null) {
+                connection.setAutoCommit(true);
+                connection.close();
+            }
+        }
+    }
+
+    public int listaTodasVendas() {
+        return vendaDAO.listarTodasVendas().size();
     }
 }

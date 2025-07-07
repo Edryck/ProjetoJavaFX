@@ -3,7 +3,7 @@ package com.example.main.model.rn;
 import com.example.main.enums.TipoAlerta;
 import com.example.main.exceptions.DAOException;
 import com.example.main.exceptions.RNException;
-import com.example.main.model.dao.ProdutosDAO;
+import com.example.main.model.dao.ProdutoDAO;
 import com.example.main.model.vo.Produto;
 import com.example.main.util.Alerta;
 
@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class ProdutoRN {
-    private final ProdutosDAO produtoDAO = new ProdutosDAO();
+    private final ProdutoDAO produtoDAO = new ProdutoDAO();
 
     public void cadastrar(Produto produto) {
         if (produtoDAO.codigoJaExiste(produto.getIdProduto())) {
